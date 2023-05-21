@@ -1,0 +1,28 @@
+Đến thời điểm này, các ví dụ trong chương này đã xác định các giao diện chức năng riêng của chúng để
+có thể minh họa rõ ràng các khái niệm cơ bản đằng sau biểu thức lambda và giao diện chức năng.
+
+Tuy nhiên, trong nhiều trường hợp, bạn sẽ không cần phải xác định giao diện chức năng riêng của mình
+vì gói java.util.function cung cấp một số giao diện đã được xác định trước. Mặc dù chúng ta sẽ xem xét
+chúng một cách cụ thể hơn ở Phần II, đây là một số ví dụ:
+
+Dưới đây là 6 giao diện chức năng được xác định sẵn trong gói java.util.function:
+
+1. Predicate<T>: Một giao diện chức năng có phương thức test(T)
+để kiểm tra một đối tượng có thoả mãn một điều kiện nhất định hay không.
+
+2. Function<T, R>: Một giao diện chức năng có phương thức apply(T)
+để chuyển đổi một đối tượng từ kiểu T thành kiểu R.
+
+3. Consumer<T>: Một giao diện chức năng có phương thức accept(T)
+để thực hiện một hành động trên một đối tượng kiểu T.
+
+4. Supplier<T>: Một giao diện chức năng không có tham số đầu vào và có phương thức get()
+để cung cấp một giá trị kiểu T.
+
+5. UnaryOperator<T>: Một giao diện chức năng kế thừa từ Function<T, T> và có phương thức apply(T)
+để thực hiện một phép biến đổi trên một đối tượng kiểu T và trả về cùng kiểu T.
+
+6. BinaryOperator<T>: Một giao diện chức năng kế thừa từ BiFunction<T, T, T> và có phương thức apply(T, T)
+để thực hiện một phép biến đổi trên hai đối tượng kiểu T và trả về cùng kiểu T.
+
+Lưu ý rằng đây chỉ là một số ví dụ, trong gói java.util.function còn có nhiều giao diện chức năng khác.
