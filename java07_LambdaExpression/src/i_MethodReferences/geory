@@ -1,0 +1,12 @@
+/*
+* • Có một tính năng quan trọng liên quan đến biểu thức lambda được gọi là tham chiếu phương thức (method reference).
+* Tham chiếu phương thức cung cấp một cách để tham chiếu đến một phương thức mà không thực hiện nó. Nó liên quan đến
+* biểu thức lambda vì cũng yêu cầu một ngữ cảnh kiểu mục tiêu (target type context) bao gồm một giao diện chức năng tương thích.
+* Khi được đánh giá, một tham chiếu phương thức cũng tạo ra một phiên bản của giao diện chức năng.
+*
+* • Có các loại tham chiếu phương thức khác nhau
+*       1. Method References to static Methods
+*       2. Method References to Instance Methods
+*       3. Method References to Instance Methods
+*       4. Constructor References
+* */
