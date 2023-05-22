@@ -1,0 +1,39 @@
+
+• Bây giờ bạn đã quen thuộc với các giao diện của bộ sưu tập, bạn đã sẵn sàng
+để xem xét các lớp tiêu chuẩn thực hiện chúng. Một số lớp cung cấp các hiện
+thực đầy đủ có thể được sử dụng ngay. Các lớp khác là trừu tượng, cung cấp
+các hiện thực sườn mẫu được sử dụng như điểm bắt đầu để tạo ra các bộ sưu tập cụ thể.
+• Như một quy tắc chung, các lớp bộ sưu tập không được đồng bộ hóa, nhưng như bạn sẽ
+thấy sau trong chương này, có thể thu được các phiên bản đã được đồng bộ hóa.
+
+• Các lớp bộ sưu tập chính được tóm tắt trong bảng sau:
+
+Dưới đây là danh sách các lớp trong gói `java.util` của Java liên quan đến tập hợp (collections):
+
+1. AbstractCollection: Lớp này cung cấp một bộ khung (framework) chung cho việc triển khai các lớp tập hợp (collection).
+
+2. AbstractList: Lớp này triển khai các phương thức chung cho việc triển khai danh sách (list).
+
+3. AbstractQueue: Lớp này triển khai các phương thức chung cho việc triển khai hàng đợi (queue).
+
+4. AbstractSequentialList: Lớp này triển khai các phương thức chung cho việc triển khai danh sách tuần tự (sequential list).
+
+5. LinkedList: Lớp này triển khai một danh sách liên kết (linked list).
+
+6. ArrayList: Lớp này triển khai một mảng động (dynamic array).
+
+7. ArrayDeque: Lớp này triển khai một hàng đợi hai đầu (double-ended queue) được triển khai bằng một mảng động.
+
+8. AbstractSet: Lớp này triển khai các phương thức chung cho việc triển khai tập hợp (set).
+
+9. EnumSet: Lớp này triển khai một tập hợp các giá trị của một enum.
+
+10. HashSet: Lớp này triển khai một tập hợp (set) không trùng lặp bằng cách sử dụng bảng băm (hash table).
+
+11. LinkedHashSet: Lớp này triển khai một tập hợp không trùng lặp và duy trì thứ tự chèn của các phần tử.
+
+12. PriorityQueue: Lớp này triển khai một hàng đợi ưu tiên (priority queue), trong đó các phần tử được lấy ra dựa trên một tiêu chí ưu tiên.
+
+13. TreeSet: Lớp này triển khai một tập hợp (set) các phần tử được sắp xếp theo thứ tự tăng dần hoặc giảm dần.
+
+Các lớp trên cung cấp các tính năng và phương thức riêng biệt để làm việc với tập hợp dữ liệu phù hợp với yêu cầu của bạn.
