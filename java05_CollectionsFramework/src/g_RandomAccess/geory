@@ -1,7 +1,0 @@
-Giao diện RandomAccess không chứa bất kỳ thành viên nào. Tuy nhiên, bằng cách triển khai giao diện này,
-một collection cho biết nó hỗ trợ truy cập ngẫu nhiên hiệu quả đến các phần tử của nó. Mặc dù một collection
-có thể hỗ trợ truy cập ngẫu nhiên, nhưng có thể không làm điều đó một cách hiệu quả. Bằng cách kiểm tra giao diện
-RandomAccess, mã nguồn của khách hàng có thể xác định tại thời gian chạy liệu một collection có phù hợp cho một số
-loại hoạt động truy cập ngẫu nhiên cụ thể - đặc biệt là khi áp dụng cho các collection lớn.
-(Bạn có thể sử dụng instanceof để xác định xem một lớp có triển khai một giao diện hay không.)
-Giao diện RandomAccess được triển khai bởi ArrayList và lớp Vector cũ, cùng với các lớp khác.
