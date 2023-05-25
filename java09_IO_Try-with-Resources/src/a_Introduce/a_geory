@@ -1,0 +1,23 @@
+I/O, Try-with-Resources và Các Chủ Đề Khác
+Chương này giới thiệu một trong những gói quan trọng nhất của Java, java.io, hỗ trợ hệ thống I/O (đầu vào/đầu ra) cơ bản của Java,
+bao gồm I/O tệp. Hỗ trợ cho I/O được cung cấp từ các thư viện API cốt lõi của Java, không phải từ các từ khóa ngôn ngữ.
+Vì lý do này, một cuộc thảo luận sâu về chủ đề này được đề cập trong Phần II của cuốn sách này, nơi xem xét một số gói API của Java.
+Ở đây, nền tảng của hệ thống con quan trọng này được giới thiệu để bạn có thể thấy nó phù hợp với ngữ cảnh lớn hơn của môi trường
+lập trình và thực thi Java. Chương này cũng xem xét câu lệnh try-with-resources và một số từ khóa Java khác:
+transient, volatile, instanceof, native, strictfp và assert.
+
+Nó kết thúc bằng việc thảo luận về import tĩnh (static import) và mô tả một cách sử dụng khác cho từ khóa this.
+
+Cơ bản về I/O
+Như bạn có thể đã nhận thấy khi đọc 12 chương trước đó, không có nhiều sử dụng của I/O trong các ví dụ chương trình.
+Trên thực tế, ngoại trừ print() và println(), không có phương thức I/O nào được sử dụng đáng kể.
+Lý do là đơn giản: hầu hết các ứng dụng thực tế của Java không phải là các chương trình dựa trên văn bản, điều khiển qua giao diện
+dòng lệnh. Thay vào đó, chúng thường là các chương trình hướng đồ họa dựa trên một trong các framework giao diện người dùng đồ họa (GUI)
+của Java, như Swing, AWT hoặc JavaFX, để tương tác với người dùng, hoặc là các ứng dụng Web. Mặc dù các chương trình dựa trên văn bản,
+điều khiển qua giao diện dòng lệnh là tuyệt vời như các ví dụ giảng dạy, nhưng nó không phải là một ứng dụng quan trọng của Java
+trong thế giới thực. Hơn nữa, hỗ trợ của Java cho I/O dòng lệnh hạn chế và hơi cồng kềnh trong việc sử dụng, ngay cả trong các ví dụ
+chương trình đơn giản. I/O dựa trên văn bản qua giao diện dòng lệnh đơn giản không phải là một công cụ hữu ích trong lập trình Java thế giới thực.
+
+Bất chấp đoạn văn trên, Java vẫn cung cấp sự hỗ trợ mạnh mẽ, linh hoạt cho I/O liên quan đến tệp và mạng. Hệ thống I/O của Java là một
+và nhất quán. Trên thực tế, một khi bạn hiểu được những nguyên tắc cơ bản, phần còn lại của hệ thống I/O sẽ dễ dàng hơn để làm chủ.
+Một tổng quan chung về I/O được trình bày ở đây. Mô tả chi tiết được tìm thấy trong Chương 21 và 22.

@@ -1,0 +1,16 @@
+Luồng (Streams)
+
+Trong Java, các chương trình thực hiện I/O thông qua các luồng (streams). Một luồng là một sự trừu tượng có thể tạo ra hoặc tiêu thụ thông tin.
+Một luồng được liên kết với một thiết bị vật lý thông qua hệ thống I/O của Java. Tất cả các luồng hoạt động theo cùng một cách,
+ngay cả khi các thiết bị vật lý thực tế mà chúng được liên kết khác nhau. Do đó, cùng các lớp và phương thức I/O có thể được áp dụng
+cho các loại thiết bị khác nhau.
+
+Điều này có nghĩa là một luồng nhập có thể trừu tượng hóa nhiều loại đầu vào khác nhau:
+từ một tệp đĩa, một bàn phím, hoặc một kết nối mạng.
+
+Tương tự, một luồng xuất có thể liên quan đến console, một tệp đĩa, hoặc một kết nối mạng. Luồng là một cách sạch sẽ để xử lý đầu vào/đầu ra
+mà không cần mỗi phần của mã của bạn hiểu sự khác biệt giữa một bàn phím và một mạng, ví dụ. Java thực hiện luồng trong các hệ thống lớp được
+định nghĩa trong gói java.io.
+
+LƯU Ý: Ngoài I/O dựa trên luồng được định nghĩa trong java.io, Java cũng cung cấp I/O dựa trên bộ đệm và kênh, được định nghĩa trong java.nio
+và các gói con của nó. Chúng được mô tả trong Chương 22.

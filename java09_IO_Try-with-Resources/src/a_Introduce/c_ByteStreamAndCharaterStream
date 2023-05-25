@@ -1,0 +1,18 @@
+
+Luồng Byte và Luồng Ký tự
+
+Java xác định hai loại luồng: luồng byte và luồng ký tự. Luồng byte cung cấp một cách thuận tiện để xử lý đầu vào và đầu ra
+của các byte. Luồng byte được sử dụng, ví dụ, khi đọc hoặc ghi dữ liệu nhị phân. Luồng ký tự cung cấp một cách thuận tiện để xử lý
+đầu vào và đầu ra của các ký tự. Chúng sử dụng Unicode và do đó có thể quốc tế hóa.
+
+Ngoài ra, trong một số trường hợp, luồng ký tự có thể hiệu quả hơn luồng byte.
+
+Phiên bản ban đầu của Java (Java 1.0) không bao gồm luồng ký tự, và do đó, toàn bộ I/O dựa trên byte.
+Luồng ký tự được thêm vào bởi Java 1.1 và một số lớp và phương thức dựa trên byte đã bị lỗi thời.
+Mặc dù mã cũ không sử dụng luồng ký tự ngày càng trở nên hiếm, nhưng có thể gặp phải từ thời gian này qua thời gian khác.
+Như một nguyên tắc chung, mã cũ nên được cập nhật để tận dụng luồng ký tự khi thích hợp.
+
+Một điểm khác: ở mức thấp nhất, tất cả I/O vẫn dựa trên byte. Các luồng dựa trên ký tự chỉ đơn giản cung cấp một cách thuận tiện
+và hiệu quả để xử lý các ký tự.
+
+Một cái nhìn tổng quan về cả luồng dựa trên byte và luồng dựa trên ký tự được trình bày trong các phần tiếp theo.

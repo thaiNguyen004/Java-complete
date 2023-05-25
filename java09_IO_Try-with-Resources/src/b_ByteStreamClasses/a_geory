@@ -1,0 +1,72 @@
+
+Các Lớp Luồng Byte
+
+Luồng byte được xác định bằng cách sử dụng hai hệ thống lớp. Ở đỉnh là hai lớp trừu tượng: InputStream và OutputStream.
+Một trong những lớp trừu tượng này có một số lớp con cụ thể xử lý sự khác biệt giữa các thiết bị khác nhau,
+chẳng hạn như tệp đĩa, kết nối mạng và thậm chí bộ đệm bộ nhớ.
+
+Các lớp luồng byte trong java.io được hiển thị trong Bảng sau:
+
+Dưới đây là mô tả cho các lớp được yêu cầu:
+
+1. BufferedInputStream: Lớp này cung cấp một bộ đệm cho việc đọc dữ liệu từ một luồng byte khác,
+làm tăng hiệu suất đọc bằng cách đọc dữ liệu theo nhóm từ bộ đệm thay vì từng byte một.
+
+2. BufferedOutputStream: Lớp này cung cấp một bộ đệm cho việc ghi dữ liệu vào một luồng byte khác,
+cho phép ghi dữ liệu theo nhóm từ bộ đệm thay vì từng byte một, tăng hiệu suất ghi.
+
+3. ByteArrayInputStream: Lớp này cho phép bạn đọc dữ liệu từ một mảng byte đã có sẵn như một nguồn
+dữ liệu đầu vào.
+
+4. ByteArrayOutputStream: Lớp này cho phép bạn ghi dữ liệu vào một mảng byte, và sau đó bạn có thể
+lấy dữ liệu đó dưới dạng một mảng byte.
+
+5. DataInputStream: Lớp này cung cấp các phương thức để đọc dữ liệu từ một luồng byte dưới dạng các
+kiểu dữ liệu cơ bản, như int, double, boolean, v.v.
+
+6. DataOutputStream: Lớp này cung cấp các phương thức để ghi dữ liệu vào một luồng byte dưới dạng
+các kiểu dữ liệu cơ bản, tương ứng với các phương thức của DataInputStream.
+
+7. FileInputStream: Lớp này cho phép bạn đọc dữ liệu từ một tệp đã có sẵn như một nguồn dữ liệu
+đầu vào.
+
+8. FileOutputStream: Lớp này cho phép bạn ghi dữ liệu vào một tệp, tạo ra một nguồn dữ liệu đầu ra.
+
+9. FilterInputStream: Lớp này là lớp cơ sở cho các lớp luồng byte được tạo bởi việc kết hợp với một
+luồng byte khác để thực hiện các chức năng bổ sung, như mã hóa hoặc nén dữ liệu.
+
+10. FilterOutputStream: Tương tự như FilterInputStream, lớp này là lớp cơ sở cho các lớp luồng byte
+được tạo bởi việc kết hợp với một luồng byte khác để thực hiện các chức năng bổ sung, như mã hóa
+hoặc nén dữ liệu.
+
+11. InputStream: Lớp này là lớp cơ sở cho tất cả các lớp luồng byte đọc dữ liệu từ một nguồn dữ liệu.
+
+12. ObjectInputStream: Lớp này cho phép bạn đọc các đối tượng từ một luồng byte, được sử dụng để tuần
+tự hóa đối tượng.
+
+13. ObjectOutputStream: Lớp này cho phép bạn ghi các đối tượng vào một luồng byte, được sử dụng để
+tuần tự hóa đối tượng.
+
+14. OutputStream: Lớp này là lớp cơ sở cho tất cả các lớp luồng byte ghi dữ liệu vào một đích đầu ra.
+
+15. PipedInputStream: Lớp này cho phép bạn đọc dữ liệu từ một luồng byte được kết nối với một luồng
+byte khác thông qua ống nối (pipe).
+
+16. PipedOutputStream: Lớp này cho phép bạn ghi dữ liệu vào một luồng byte được kết nối với một luồng
+byte khác thông qua ống nối (pipe).
+
+17. PrintStream: Lớp này cung cấp các phương thức để ghi các giá trị định dạng vào một luồng byte, thường
+được sử dụng để ghi dữ liệu vào luồng đầu ra tiêu chuẩn (standard output stream).
+
+18. PushbackInputStream: Lớp này cho phép bạn đẩy lại byte đã đọc trở lại một luồng byte, cho phép bạn
+đọc lại byte đã đọc trước đó.
+
+19. SequenceInputStream: Lớp này cho phép bạn kết hợp nhiều luồng byte thành một luồng duy nhất, cho phép
+đọc dữ liệu từ các nguồn khác nhau liên tiếp nhau.
+
+. Một số lớp này sẽ được thảo luận trong phần sau của mục này. Các lớp khác được mô tả trong Phần II của
+cuốn sách này. Hãy nhớ rằng, để sử dụng các lớp luồng, bạn phải nhập khẩu java.io.
+
+Các lớp trừu tượng InputStream và OutputStream định nghĩa một số phương thức quan trọng mà các lớp luồng khác triển khai.
+Hai trong số những phương thức quan trọng nhất là read() và write(), tương ứng để đọc và ghi các byte dữ liệu.
+Mỗi phương thức có một dạng trừu tượng và phải được ghi đè bởi các lớp luồng con.

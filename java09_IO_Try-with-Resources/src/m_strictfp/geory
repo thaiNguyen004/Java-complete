@@ -1,0 +1,12 @@
+
+strictfp
+Với việc tạo ra Java 2 cách đây một vài năm, mô hình tính toán dấu phẩy động đã được nới lỏng một chút.
+Cụ thể, mô hình mới không yêu cầu cắt giảm giá trị trung gian cụ thể nào xảy ra trong quá trình tính toán.
+Điều này ngăn chặn tràn hoặc thiếu trong một số trường hợp.
+
+Bằng cách sửa đổi một lớp, một phương thức hoặc giao diện bằng strictfp, bạn đảm bảo rằng các phép tính
+dấu phẩy động (và do đó tất cả các phép cắt giảm) diễn ra chính xác như trong các phiên bản trước của Java.
+Khi một lớp được sửa đổi bởi strictfp, tất cả các phương thức trong lớp cũng được tự động sửa đổi bằng strictfp.
+Ví dụ, đoạn mã sau cho biết Java sử dụng mô hình dấu phẩy động ban đầu cho các phép tính trong tất cả các phương thức được xác định trong MyClass:
+strictfp class MyClass { //...
+Thực tế, hầu hết các lập trình viên không cần sử dụng strictfp, vì nó chỉ ảnh hưởng đến một loại rất nhỏ của các vấn đề.

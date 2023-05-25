@@ -1,0 +1,36 @@
+Các lớp luồng ký tự được định nghĩa bằng cách sử dụng hai hệ thống lớp trừu tượng. Ở đỉnh cao nhất là hai lớp trừu tượng:
+Reader và Writer. Các lớp trừu tượng này xử lý luồng ký tự Unicode. Java có một số lớp con cụ thể cho mỗi lớp này.
+Các lớp luồng ký tự trong java.io được hiển thị trong Bảng sau:
+
+
+- BufferedReader: Là một lớp con của lớp Reader và cung cấp một bộ đệm cho việc đọc ký tự từ một luồng ký tự. Nó tăng hiệu suất đọc bằng cách đọc dữ liệu một lần và lưu trữ vào bộ đệm nội bộ.
+
+- BufferedWriter: Là một lớp con của lớp Writer và cung cấp một bộ đệm cho việc ghi ký tự vào một luồng ký tự. Nó tăng hiệu suất ghi bằng cách ghi dữ liệu một lần và lưu trữ vào bộ đệm nội bộ.
+
+- CharArrayReader: Là một lớp con của lớp Reader và cho phép đọc ký tự từ một mảng ký tự trong bộ nhớ.
+
+- CharArrayWriter: Là một lớp con của lớp Writer và cho phép ghi ký tự vào một mảng ký tự trong bộ nhớ.
+
+- FileReader: Là một lớp con của lớp Reader và cho phép đọc ký tự từ một tệp tin trên đĩa.
+
+- FileWriter: Là một lớp con của lớp Writer và cho phép ghi ký tự vào một tệp tin trên đĩa.
+
+- FilterReader: Là một lớp trừu tượng con của lớp Reader và cung cấp các tính năng mở rộng cho việc đọc ký tự từ một luồng ký tự.
+
+- FilterWriter: Là một lớp trừu tượng con của lớp Writer và cung cấp các tính năng mở rộng cho việc ghi ký tự vào một luồng ký tự.
+
+- InputStreamReader: Là một lớp con của lớp Reader và chuyển đổi các byte đọc từ một luồng byte thành các ký tự bằng cách sử dụng bộ mã ký tự cụ thể.
+
+- LineNumberReader: Là một lớp con của lớp BufferedReader và theo dõi số dòng khi đọc các dữ liệu ký tự từ một luồng ký tự.
+
+- OutputStreamWriter: Là một lớp con của lớp Writer và chuyển đổi các ký tự ghi vào một luồng byte thành các byte bằng cách sử dụng bộ mã ký tự cụ thể.
+
+- PipedReader: Là một lớp con của lớp Reader và cho phép đọc ký tự từ một luồng đường ống.
+
+- PipedWriter: Là một lớp con của lớp Writer và cho phép ghi ký tự vào một luồng đường ống.
+
+- PrintWriter: Là một lớp con của lớp Writer và cung cấp các phương thức để ghi các loại dữ liệu
+
+Các lớp trừu tượng Reader và Writer định nghĩa một số phương thức quan trọng mà các lớp luồng khác triển khai.
+Hai phương thức quan trọng nhất là read() và write(), lần lượt dùng để đọc và ghi các ký tự dữ liệu.
+Mỗi phương thức có một dạng trừu tượng và cần được ghi đè bởi các lớp con của lớp luồng tương ứng.
