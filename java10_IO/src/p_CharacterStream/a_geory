@@ -1,0 +1,6 @@
+
+Các Luồng Ký tự
+Trong khi các lớp luồng byte cung cấp đủ chức năng để xử lý bất kỳ loại thao tác I/O nào, chúng không thể làm việc trực tiếp với các ký tự Unicode.
+Vì một trong những mục đích chính của Java là hỗ trợ triết lý "viết một lần, chạy ở bất kỳ đâu", nên cần có hỗ trợ I/O trực tiếp cho các ký tự.
+Trong phần này, chúng ta sẽ thảo luận về một số lớp I/O ký tự. Như đã giải thích trước đó, ở đỉnh của các hệ thống luồng ký tự là các lớp
+trừu tượng Reader và Writer. Chúng ta sẽ bắt đầu với chúng.
