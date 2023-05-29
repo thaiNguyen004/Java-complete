@@ -1,0 +1,26 @@
+ObjectOutput
+
+Giao diện ObjectOutput mở rộng các giao diện DataOutput và AutoCloseable và hỗ trợ tuần tự hóa đối tượng.
+Nó định nghĩa các phương thức được hiển thị trong Bảng 21-6. Lưu ý đặc biệt phương thức writeObject().
+Phương thức này được gọi để tuần tự hóa một đối tượng. Tất cả các phương thức này sẽ ném một IOException
+khi xảy ra điều kiện lỗi.
+
+Các phương thức được mô tả dưới đây là các phương thức trong giao diện ObjectOutput:
+
+1. void close( )
+   - Phương thức này đóng luồng đầu ra. Sau khi gọi phương thức này, không thể ghi dữ liệu vào luồng nữa.
+
+2. void flush( )
+   - Phương thức này đẩy dữ liệu từ bộ đệm xuống luồng đầu ra. Điều này đảm bảo rằng dữ liệu được ghi từ bộ đệm vào luồng.
+
+3. void write(byte[] buffer)
+   - Phương thức này ghi toàn bộ mảng byte buffer vào luồng đầu ra.
+
+4. void write(byte[] buffer, int offset, int numBytes)
+   - Phương thức này ghi một phần của mảng byte buffer vào luồng đầu ra, bắt đầu từ vị trí offset và ghi numBytes byte.
+
+5. void write(int b)
+   - Phương thức này ghi một byte duy nhất vào luồng đầu ra. Tham số b là giá trị byte cần ghi.
+
+6. void writeObject(Object obj)
+   - Phương thức này được sử dụng để tuần tự hóa một đối tượng và ghi nó vào luồng đầu ra.

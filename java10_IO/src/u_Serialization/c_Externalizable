@@ -1,0 +1,13 @@
+Externalizable
+Các tiện ích Java cho tuần tự hóa và phục hồi đã được thiết kế để một phần lớn công việc để lưu trữ và khôi phục trạng thái
+của một đối tượng xảy ra tự động. Tuy nhiên, có những trường hợp mà người lập trình có thể cần kiểm soát các quy trình này.
+
+Ví dụ, có thể mong muốn sử dụng các kỹ thuật nén hoặc mã hóa. Giao diện Externalizable được thiết kế cho những tình huống này.
+
+Giao diện Externalizable định nghĩa hai phương thức sau:
+
+    void readExternal(ObjectInput inStream) throws IOException, ClassNotFoundException
+    void writeExternal(ObjectOutput outStream) throws IOException
+
+Trong các phương thức này, inStream là luồng byte mà đối tượng sẽ được đọc từ đó và outStream là luồng byte mà đối tượng
+sẽ được ghi vào.

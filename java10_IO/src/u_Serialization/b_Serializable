@@ -1,0 +1,10 @@
+Serializable
+
+Chỉ có một đối tượng thực hiện giao diện Serializable mới có thể được lưu trữ và khôi phục bằng cách sử dụng các
+tiện ích serialization. Giao diện Serializable không định nghĩa bất kỳ thành viên nào. Nó chỉ đơn giản được sử
+dụng để chỉ ra rằng một lớp có thể được tuần tự hóa. Nếu một lớp có thể tuần tự hóa, tất cả các lớp con của nó
+cũng có thể tuần tự hóa.
+
+Các biến được khai báo là transient không được lưu trữ bởi các tiện ích serialization.
+Ngoài ra, các biến static cũng không được lưu trữ.
+

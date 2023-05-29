@@ -1,0 +1,21 @@
+Serialization là quá trình ghi trạng thái của một đối tượng vào một luồng byte. Điều này hữu ích khi bạn muốn lưu
+trạng thái của chương trình vào một vùng lưu trữ lâu dài, như một tập tin. Sau này, bạn có thể khôi phục các đối tượng
+này bằng cách sử dụng quá trình deserialization.
+
+Serialization cũng cần thiết để triển khai Remote Method Invocation (RMI). RMI cho phép một đối tượng Java trên một máy tính
+gọi một phương thức của một đối tượng Java trên một máy tính khác. Một đối tượng có thể được cung cấp như một đối số cho
+phương thức từ xa đó. Máy gửi sẽ serialize đối tượng và truyền nó đi.
+Máy nhận sẽ deserialize nó. (Thông tin thêm về RMI xuất hiện trong Chương 30.)
+
+Giả sử một đối tượng cần được serialized có các tham chiếu đến các đối tượng khác, mà lại có tham chiếu đến các đối tượng khác nữa.
+Tập hợp các đối tượng này và các mối quan hệ giữa chúng tạo thành một đồ thị có hướng. Có thể có các tham chiếu vòng trong đồ thị
+đối tượng này. Đó là, đối tượng X có tham chiếu đến đối tượng Y, và đối tượng Y có tham chiếu trở lại đối tượng X. Đối tượng cũng
+có thể chứa tham chiếu đến chính nó. Cơ sở về serialization và deserialization đã được thiết kế để hoạt động đúng trong các tình huống này.
+
+Nếu bạn cố gắng serialize một đối tượng ở đầu của đồ thị đối tượng, tất cả các đối tượng tham chiếu khác sẽ được định vị và serialized theo đệ quy.
+Tương tự, trong quá trình deserialization, tất cả các đối tượng này và các tham chiếu của chúng được khôi phục đúng.
+
+Đáng lưu ý rằng serialization và deserialization có thể ảnh hưởng đến bảo mật, đặc biệt là liên quan đến việc deserialization
+của các đối tượng mà bạn không tin tưởng. Hãy tham khảo tài liệu Java để biết thông tin về vấn đề này và về bảo mật nói chung.
+
+Sau đây là một cái nhìn tổng quan về các giao diện và lớp hỗ trợ serialization.
