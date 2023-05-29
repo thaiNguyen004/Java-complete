@@ -1,0 +1,58 @@
+
+Hai cách để đóng một stream
+
+Nhìn chung, một stream phải được đóng khi nó không còn được sử dụng nữa. Việc không đóng stream có thể dẫn đến rò rỉ bộ nhớ
+và cạn kiệt tài nguyên. Các kỹ thuật được sử dụng để đóng một stream đã được mô tả trong Chương 13, nhưng vì tầm quan trọng của chúng,
+chúng được xem xét lại một cách ngắn gọn ở đây trước khi xem xét các lớp stream.
+
+Bắt đầu từ JDK 7, có hai cách cơ bản để đóng một stream. Cách đầu tiên là gọi close() một cách rõ ràng trên stream.
+Đây là cách tiếp cận truyền thống đã được sử dụng từ phiên bản Java ban đầu. Với cách tiếp cận này, thông thường close()
+được gọi trong một khối finally. Vì vậy, một khung trình đơn giản cho cách tiếp cận truyền thống được hiển thị ở đây:
+
+    try {
+        // mở và truy cập file
+    } catch (I/O-exception) {
+        // ...
+    } finally {
+        // đóng file
+    }
+
+Kỹ thuật chung này (hoặc biến thể của nó) phổ biến trong mã nguồn đã tồn tại trước JDK 7.
+
+Cách tiếp cận thứ hai để đóng một stream là tự động hóa quá trình bằng cách sử dụng câu lệnh try-with-resources được thêm vào từ JDK 7.
+Câu lệnh try-with-resources là một hình thức nâng cao của câu lệnh try có dạng như sau:
+
+    try (resource-specification) {
+        // sử dụng tài nguyên
+    }
+
+Thường thì resource-specification là một câu lệnh hoặc các câu lệnh khai báo và khởi tạo một tài nguyên, chẳng hạn như một file hoặc một tài nguyên
+liên quan đến stream khác. Nó bao gồm một khai báo biến trong đó biến được khởi tạo với một tham chiếu tới đối tượng đang được quản lý. Khi khối try
+kết thúc, tài nguyên được giải phóng tự động. Trong trường hợp của một file, điều này có nghĩa là file được đóng tự động. Do đó, không cần gọi close()
+một cách rõ ràng.
+
+Bắt đầu từ JDK 9, cũng có thể cho phép resource specification của try bao gồm một biến đã được khai báo và khởi tạo trước trong chương trình.
+Tuy nhiên, biến đó phải là biến "effective final", có nghĩa là sau khi được gán giá trị ban đầu, nó không được gán giá trị mới.
+
+Dưới đây là ba điểm quan trọng về câu lệnh try-with-resources:
+- Các tài nguyên được quản lý bởi try-with-resources phải là đối tượng của các lớp implement AutoCloseable.
+- Một tài nguyên được khai báo trong khối try được tự động coi là final. Một tài nguyên được khai báo bên ngoài khối try phải là effectively final.
+- Bạn có thể quản lý nhiều tài nguyên bằng cách phân tách mỗi khai báo bằng dấu chấm phẩy.
+
+Hãy nhớ rằng phạm vi của một tài nguyên được khai báo trong khối try bị giới hạn trong câu lệnh try-with-resources.
+
+Lợi ích chính của try-with-resources là tài nguyên (trong trường hợp này là một stream) được đóng tự động khi khối try kết thúc. Do đó, không thể
+quên đóng stream, ví dụ như. Phương pháp try-with-resources cũng thường dẫn đến mã nguồn ngắn hơn, rõ ràng hơn và dễ bảo trì hơn.
+
+Do những lợi ích này, dự kiến rằng try-with-resources sẽ được sử dụng rộng rãi trong mã nguồn mới. Kết quả là hầu hết mã trong chương này
+(và trong cuốn sách này) sẽ sử dụng nó. Tuy nhiên, vì vẫn còn một lượng lớn mã cũ tồn tại, điều quan trọng là tất cả các lập trình viên cũng nên quen
+với cách tiếp cận truyền thống để đóng một stream. Ví dụ, bạn có thể phải làm việc trên mã cũ sử dụng cách tiếp cận truyền thống hoặc trong một
+môi trường sử dụng phiên bản Java cũ hơn. Cũng có thể có những lúc cách tiếp cận tự động không phù hợp vì các khía cạnh khác của mã của bạn.
+Vì lý do này, một số ví dụ I/O trong cuốn sách này sẽ thể hiện cách tiếp cận truyền thống để bạn có thể thấy nó hoạt động.
+
+Một điểm cuối cùng: Các ví dụ sử dụng try-with-resources phải được biên dịch bằng một phiên bản Java hiện đại. Chúng sẽ không hoạt động với trình
+biên dịch cũ hơn. Các ví dụ sử dụng cách tiếp cận truyền thống có thể được biên dịch bởi các phiên bản Java cũ hơn.
+
+NHỚ RẰNG
+Bởi vì try-with-resources tối ưu quá trình giải phóng tài nguyên và loại bỏ khả năng quên giải phóng một tài nguyên một cách vô tình,
+nên nó là phương pháp được khuyến nghị cho mã mới khi việc sử dụng nó là phù hợp.

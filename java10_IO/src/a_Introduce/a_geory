@@ -1,0 +1,94 @@
+
+Chương này khám phá về java.io, cung cấp hỗ trợ cho các hoạt động I/O.
+Chương 13 trình bày tổng quan về hệ thống I/O của Java, bao gồm các kỹ thuật cơ bản để đọc và ghi tệp, xử lý ngoại lệ I/O và đóng tệp.
+Ở đây, chúng ta sẽ xem xét hệ thống Java I/O một cách chi tiết hơn.
+
+Như tất cả các lập trình viên đều biết sớm, hầu hết các chương trình không thể hoàn thành mục tiêu của mình mà không truy cập dữ liệu từ bên ngoài.
+Dữ liệu được lấy từ nguồn đầu vào. Kết quả của một chương trình được gửi đến một đích đầu ra. Trong Java, những nguồn hoặc đích này được
+định nghĩa rất rộng. Ví dụ, một kết nối mạng, bộ nhớ đệm hoặc tệp đĩa có thể được điều khiển bằng các lớp Java I/O. Mặc dù khác nhau về mặt vật lý,
+những thiết bị này đều được xử lý bằng cách trừu tượng chung: luồng (stream). Một luồng I/O, như được giải thích trong Chương 13, là một
+thực thể logic có khả năng tạo ra hoặc tiêu thụ thông tin. Một luồng I/O được liên kết với một thiết bị vật lý bởi hệ thống Java I/O.
+
+Tất cả các luồng I/O hoạt động theo cùng một cách, ngay cả khi các thiết bị vật lý thực tế mà chúng liên kết khác nhau.
+LƯU Ý: Hệ thống I/O dựa trên luồng được đóng gói trong java.io và được mô tả trong chương này đã là một phần của Java kể từ phiên bản ban đầu
+và được sử dụng rộng rãi. Tuy nhiên, bắt đầu từ phiên bản 1.4, một hệ thống I/O thứ hai đã được thêm vào Java. Nó được gọi là NIO (ban đầu là
+viết tắt của New I/O). NIO được đóng gói trong java.nio và các gói con của nó. Hệ thống NIO được mô tả trong Chương 22.
+LƯU Ý: Quan trọng là không nhầm lẫn giữa các luồng I/O được sử dụng bởi hệ thống I/O được thảo luận ở đây với giao diện lập trình ứng dụng
+luồng được thêm vào JDK 8. Mặc dù có liên quan về mặt khái niệm, chúng là hai thứ khác nhau. Do đó, khi cụm từ "stream" được sử dụng trong
+chương này, nó chỉ đề cập đến một luồng I/O.
+
+Các Lớp và Giao diện I/O
+Các lớp I/O được định nghĩa bởi java.io được liệt kê ở đây:4
+
+BufferedInputStream
+BufferedOutputStream
+BufferedReader
+BufferedWriter
+ByteArrayInputStream
+ByteArrayOutputStream
+CharArrayReader
+CharArrayWriter
+Console
+DatalnputStream
+DataOutputStream
+File
+FileDescriptor
+FileInputStream
+FileOutputStream
+FilePermission
+FileReader
+FileWriter
+FilterlnputStream
+FilterOutputStream
+FilterReader
+FilterWriter
+InputStream
+InputStreamReader
+LineNumberReader
+ObjectlnputFilter.Config
+ObjectlnputStream
+ObjectlnputStream.GetField
+ObjectOutputStream
+ObjectOutputStream.PutField
+ObjectStreamClass
+ObjectStreamField
+OutputStream
+OutputStreamWriter
+PipedInputStream
+PipedOutputStream
+PipedReader
+PipedWriter
+PrintStream
+PrintWriter
+PushbackInputStream
+PushbackReader
+RandomAccessFile
+Reader
+SequenceInputStream
+SerializablePermission
+StreamTokenizer
+StringReader
+StringWriter
+Writer
+
+Các giao diện được định nghĩa bởi java.io
+
+Closeable
+Datalnput
+DataOutput
+Externalizable
+FileFilter
+FilenameFilter
+Flushable
+Objectlnput
+ObjectlnputFilter
+ObjectlnputFilter.FilterInfo
+ObjectlnputValidation
+ObjectOutput
+ObjectStreamConstants
+Serializable
+
+Như bạn có thể thấy, có rất nhiều lớp và giao diện trong gói java.io. Các lớp và giao diện này bao gồm luồng byte và luồng ký tự,
+cũng như việc tuần tự hóa đối tượng (lưu trữ và khôi phục đối tượng). Chương này xem xét một số thành phần I/O phổ biến được sử dụng.
+
+Chúng ta bắt đầu cuộc thảo luận với một trong những lớp I/O đặc biệt nhất: File.

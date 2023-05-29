@@ -1,0 +1,28 @@
+
+
+Các Giao diện AutoCloseable, Closeable và Flushable
+
+Có ba giao diện rất quan trọng đối với các lớp stream. Hai giao diện đó là Closeable và Flushable. Chúng được định nghĩa trong gói java.io.
+Giao diện thứ ba, AutoCloseable, được đóng gói trong gói java.lang.
+
+AutoCloseable cung cấp hỗ trợ cho câu lệnh try-with-resources, giúp tự động đóng tài nguyên. (Xem Chương 13.)
+Chỉ đối tượng của các lớp thực hiện AutoCloseable mới có thể được quản lý bởi try-with-resources.
+AutoCloseable được thảo luận trong Chương 17, nhưng được xem xét ở đây vì tính tiện lợi.
+Giao diện AutoCloseable chỉ định phương thức close():
+
+void close() throws Exception
+
+Phương thức này đóng đối tượng gọi, giải phóng bất kỳ tài nguyên nào nó có thể giữ. Nó được gọi tự động ở cuối câu lệnh
+try-with-resources, loại bỏ nhu cầu gọi close() một cách rõ ràng. Vì giao diện này được thực hiện bởi tất cả các lớp I/O mở một stream,
+tất cả các stream như vậy có thể được tự động đóng bởi câu lệnh try-with-resources. Việc tự động đóng một stream đảm bảo rằng nó
+được đóng đúng cách khi không cần thiết nữa, từ đó ngăn chặn rò rỉ bộ nhớ và các vấn đề khác.
+
+Giao diện Closeable cũng định nghĩa phương thức close(). Các đối tượng của một lớp thực hiện Closeable có thể được đóng.
+Closeable mở rộng AutoCloseable. Do đó, bất kỳ lớp nào thực hiện Closeable cũng thực hiện AutoCloseable.
+
+Các đối tượng của một lớp thực hiện Flushable có thể buộc dữ liệu đã được đệm trong bộ nhớ đệm được ghi vào stream mà đối tượng đó đính kèm.
+Nó định nghĩa phương thức flush(), được hiển thị ở đây:
+void flush() throws IOException
+
+Việc đẩy dữ liệu vào một stream thông thường làm cho dữ liệu đã được đệm trong bộ nhớ được ghi thực tế vào thiết bị cơ sở.
+Giao diện này được thực hiện bởi tất cả các lớp I/O ghi vào một stream.

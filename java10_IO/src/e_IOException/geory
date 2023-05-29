@@ -1,0 +1,15 @@
+
+Các Ngoại lệ I/O
+Hai ngoại lệ đóng vai trò quan trọng trong xử lý I/O. Ngoại lệ đầu tiên là IOException. Liên quan đến hầu hết các lớp I/O được mô
+tả trong chương này, nếu xảy ra lỗi I/O, một IOException sẽ được ném ra. Trong nhiều trường hợp, nếu một tệp không thể mở, một
+FileNotFoundException được ném ra.
+
+FileNotFoundException là một lớp con của IOException, do đó cả hai đều có thể được bắt bằng một khối catch duy nhất bắt ngoại lệ IOException.
+Vì mục đích ngắn gọn, đây là phương pháp được sử dụng trong hầu hết các mã mẫu trong chương này. Tuy nhiên, trong ứng dụng của riêng bạn,
+bạn có thể thấy hữu ích để bắt từng ngoại lệ một cách riêng biệt.
+
+Một lớp ngoại lệ khác mà đôi khi quan trọng khi thực hiện I/O là SecurityException. Như được giải thích trong Chương 13,
+trong các tình huống có sự hiện diện của một quản lý bảo mật, một số lớp tệp sẽ ném ra một SecurityException nếu xảy ra vi phạm
+bảo mật khi cố gắng mở một tệp. Theo mặc định, các ứng dụng chạy thông qua java không sử dụng một quản lý bảo mật. Vì lý do đó,
+các ví dụ I/O trong cuốn sách này không cần phải xem xét một SecurityException có thể xảy ra. Tuy nhiên, các ứng dụng khác có thể
+tạo ra một SecurityException. Trong trường hợp đó, bạn sẽ cần xử lý ngoại lệ này.

@@ -1,0 +1,18 @@
+
+BufferedInputStream
+Đệm (buffering) I/O là một tối ưu hóa hiệu suất rất phổ biến. Lớp BufferedInputStream của Java cho phép bạn "bọc" bất kỳ InputStream
+nào thành một luồng đã được đệm để cải thiện hiệu suất.
+
+BufferedInputStream có hai hàm tạo:
+    BufferedInputStream(InputStream inputStream)
+    BufferedInputStream(InputStream inputStream, int bufSize)
+
+Biểu thức đầu tiên tạo một luồng đã được đệm sử dụng một kích thước đệm mặc định.
+Trong biểu thức thứ hai, kích thước đệm được truyền vào thông qua tham số bufSize. Sử dụng kích thước là bội số của một trang bộ nhớ,
+một khối đĩa và những thứ tương tự có thể có tác động tích cực đáng kể đến hiệu suất. Tuy nhiên, điều này phụ thuộc vào cách thực hiện.
+
+Kích thước đệm tối ưu thường phụ thuộc vào hệ điều hành máy chủ, lượng bộ nhớ có sẵn và cách máy được cấu hình.
+Tuy nhiên, để tận dụng tốt việc sử dụng đệm không nhất thiết cần đến mức phức tạp như vậy. Dự đoán tốt cho kích thước là khoảng 8.192 bytes,
+và kết nối một bộ đệm nhỏ vào một luồng I/O luôn là một ý tưởng tốt. Điều này cho phép hệ thống cấp thấp đọc các khối dữ liệu từ đĩa hoặc
+mạng và lưu kết quả vào bộ đệm của bạn.
+Do đó, ngay cả khi bạn đang đọc dữ liệu từ InputStream theo từng byte, hầu hết thời gian bạn đều làm việc với bộ nhớ nhanh.

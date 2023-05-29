@@ -1,0 +1,24 @@
+
+File
+Mặc dù hầu hết các lớp được định nghĩa bởi java.io hoạt động trên luồng (stream), lớp File không làm như vậy.
+Nó trực tiếp xử lý các tệp và hệ thống tệp. Điều này có nghĩa là lớp File không chỉ định cách thông tin được lấy từ tệp hoặc được lưu trữ trong tệp;
+nó mô tả các thuộc tính của chính tệp đó. Một đối tượng File được sử dụng để nhận hoặc thao tác thông tin liên quan đến một tệp trên đĩa,
+chẳng hạn như quyền truy cập, thời gian, ngày tháng, đường dẫn thư mục và điều hướng trong các hệ thống thư mục con.
+
+LƯU Ý: Giao diện Path và lớp Files, là một phần của hệ thống NIO, cung cấp một cách thay thế mạnh mẽ cho lớp File trong nhiều trường hợp.
+Xem Chương 22 để biết thêm chi tiết.
+
+Các tệp (files) là nguồn và đích chính cho dữ liệu trong nhiều chương trình. Mặc dù có các hạn chế nghiêm ngặt về việc sử dụng chúng trong mã
+không đáng tin cậy vì lý do bảo mật, tệp vẫn là một tài nguyên trung tâm để lưu trữ thông tin bền vững và được chia sẻ. Một thư mục trong Java
+được coi là một File đơn giản với một thuộc tính bổ sung - một danh sách tên tệp mà có thể được xem xét bằng phương thức list().
+Các constructor sau có thể được sử dụng để tạo các đối tượng File:
+
+File(String directoryPath)
+File(String directoryPath, String filename)
+File(File dirObj, String filename)
+File(URI uriObj)
+
+Ở đây, directoryPath là tên đường dẫn của tệp;
+filename là tên của tệp hoặc thư mục con;
+dirObj là một đối tượng File xác định một thư mục; và uriObj là một đối tượng URI mô tả một tệp.
+

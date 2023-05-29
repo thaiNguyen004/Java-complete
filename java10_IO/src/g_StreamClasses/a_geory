@@ -1,0 +1,20 @@
+
+Các Lớp Stream
+I/O dựa trên luồng của Java được xây dựng trên bốn lớp trừu tượng:
+
+    InputStream;
+    OutputStream;
+    Reader;
+    Writer;
+
+Những lớp này đã được đề cập ngắn gọn trong Chương 13. Chúng được sử dụng để tạo ra một số lớp con cụ thể của luồng.
+Mặc dù chương trình của bạn thực hiện các hoạt động I/O thông qua các lớp con cụ thể, các lớp cấp cao định nghĩa các
+chức năng cơ bản chung cho tất cả các lớp luồng.
+
+InputStream và OutputStream được thiết kế cho luồng byte. Reader và Writer được thiết kế cho luồng ký tự. Các lớp luồng byte
+và các lớp luồng ký tự hình thành các hệ thống riêng biệt.
+
+Nói chung, bạn nên sử dụng các lớp luồng ký tự khi làm việc với ký tự hoặc chuỗi và sử dụng các lớp luồng byte khi làm việc
+với byte hoặc các đối tượng nhị phân khác.
+
+Trong phần còn lại của chương này, cả luồng hướng byte và hướng ký tự sẽ được xem xét.
