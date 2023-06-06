@@ -1,0 +1,52 @@
+Những điều để khám phá
+Phần trên đã giới thiệu các nguyên tắc cơ bản của Framework Fork/Join và mô tả một số phương thức
+thường được sử dụng. Tuy nhiên, Fork/Join là một framework phong phú bao gồm các khả năng bổ sung
+để bạn kiểm soát mức độ đồng thời mở rộng. Mặc dù cuốn sách này không thể nghiên cứu tất cả các
+vấn đề và khía cạnh liên quan đến lập trình song song và Framework Fork/Join, nhưng dưới đây là một số
+tính năng khác được đề cập.
+
+Một số tính năng khác của ForkJoinTask
+Trong một số trường hợp, bạn sẽ muốn đảm bảo rằng các phương thức như invokeAll() và fork() chỉ được gọi
+từ bên trong một ForkJoinTask. Điều này thường đơn giản, nhưng đôi khi bạn có thể có mã có thể được
+thực thi từ bên trong hoặc bên ngoài một tác vụ. Bạn có thể xác định xem mã của bạn có đang được thực thi
+từ bên trong một tác vụ bằng cách gọi hàm inForkJoinPool().
+
+Bạn có thể chuyển đổi một đối tượng Runnable hoặc Callable thành một ForkJoinTask bằng cách
+sử dụng phương thức adapt() được định nghĩa bởi ForkJoinTask. Nó có ba dạng, một dành cho việc chuyển đổi Callable,
+một dành cho Runnable không trả về kết quả và một dành cho Runnable trả về kết quả.
+Trong trường hợp của Callable, phương thức call() được thực thi. Trong trường hợp của Runnable,
+phương thức run() được thực thi.
+
+Bạn có thể thu được số lượng xấp xỉ các tác vụ đang trong hàng đợi của luồng gọi bằng cách
+gọi hàm getQueuedTaskCount().
+
+Hàm getSurplusQueuedTaskCount() được sử dụng để thu được một ước lượng số lượng xấp xỉ các tác vụ
+trong hàng đợi của luồng gọi mà vượt quá số lượng luồng khác trong pool có thể "đánh cắp" chúng.
+
+Trong Framework Fork/Join, một cách để đạt được hiệu suất cao là sử dụng công nghệ "work-stealing" (đánh cắp công việc),
+trong đó các luồng trong pool có thể lấy các tác vụ từ hàng đợi của các luồng khác khi chúng không có công việc để thực hiện.
+
+Hàm getSurplusQueuedTaskCount() giúp bạn định lượng xem luồng gọi có bao nhiêu tác vụ đang trong hàng đợi vượt quá
+số lượng luồng khác trong pool có thể "đánh cắp" chúng. Thông tin này có thể hữu ích để tối ưu hoá hiệu suất của hệ thống.
+
+Hãy nhớ rằng trong Framework Fork/Join, công việc "đánh cắp" là một trong những cách để đạt được mức độ hiệu suất cao.
+Mặc dù quá trình này diễn ra tự động, trong một số trường hợp, thông tin này có thể hữu ích để tối ưu hóa khả năng xử lý.
+
+ForkJoinTask định nghĩa các biến thể của join() và invoke() bắt đầu bằng tiền tố quietly. Chúng được hiển thị dưới đây:
+
+final void quietlyJoin( )
+Kết hợp một tác vụ, nhưng không trả về kết quả hoặc ném ra ngoại lệ.
+
+final void quietlyInvoke( )
+Gọi một tác vụ, nhưng không trả về kết quả hoặc ném ra ngoại lệ.
+
+Các phương thức này tương tự như các phiên bản không có chữ "quiet" trong tên của chúng như là Join và Invoke,
+nhưng không trả về giá trị hoặc ném ra ngoại lệ.
+
+Bạn có thể cố gắng "un-invoke" (tức là hủy lịch trình) một tác vụ bằng cách gọi tryUnfork().
+
+Một số phương thức, như getForkJoinTaskTag() và setForkJoinTaskTag(), hỗ trợ các tag. Tag là các giá trị số
+nguyên ngắn được liên kết với một tác vụ. Chúng có thể hữu ích trong các ứng dụng chuyên dụng.
+
+ForkJoinTask triển khai giao diện Serializable. Do đó, nó có thể được tuần tự hóa (serialized).
+Tuy nhiên, việc tuần tự hóa không được sử dụng trong quá trình thực thi.

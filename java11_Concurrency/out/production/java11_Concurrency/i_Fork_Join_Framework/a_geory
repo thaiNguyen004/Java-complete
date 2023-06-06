@@ -1,0 +1,32 @@
+Lập trình song song thông qua Framework Fork/Join
+Trong những năm gần đây, một xu hướng quan trọng đã xuất hiện trong phát triển phần mềm: lập trình song song.
+Lập trình song song là thuật ngữ thông thường được sử dụng để chỉ các kỹ thuật tận dụng việc máy tính có hai
+hoặc nhiều bộ xử lý (multicore). Như hầu hết độc giả đã biết, máy tính multicore đã trở nên phổ biến.
+Lợi ích mà môi trường đa bộ xử lý cung cấp là khả năng tăng hiệu suất chương trình một cách đáng kể.
+Kết quả là, có nhu cầu ngày càng tăng về một cơ chế cung cấp cho lập trình viên Java một cách đơn giản,
+hiệu quả để sử dụng đa bộ xử lý trong một cách tối ưu, có khả năng mở rộng. Để đáp ứng nhu cầu này,
+JDK 7 đã thêm vào một số lớp và giao diện mới hỗ trợ lập trình song song. Chúng thường được gọi là Framework Fork/Join.
+Framework Fork/Join được định nghĩa trong gói java.util.concurrent.
+
+Framework Fork/Join cải tiến lập trình đa luồng theo hai cách quan trọng.
+Thứ nhất, nó đơn giản hóa việc tạo và sử dụng nhiều luồng.
+Thứ hai, nó tự động sử dụng nhiều bộ xử lý.
+Nói cách khác, bằng cách sử dụng Framework Fork/Join, bạn cho phép ứng dụng của mình tự động tự điều chỉnh để tận
+dụng số lượng bộ xử lý có sẵn. Hai tính năng này làm cho Framework Fork/Join trở thành phương pháp được khuyến nghị
+cho lập trình đa luồng khi cần xử lý song song.
+
+Trước khi tiếp tục, quan trọng để chỉ ra sự khác biệt giữa đa luồng truyền thống và lập trình song song.
+Trong quá khứ, hầu hết máy tính chỉ có một CPU và đa luồng chủ yếu được sử dụng để tận dụng thời gian chờ đợi,
+chẳng hạn khi chương trình đang chờ đầu vào từ người dùng. Sử dụng phương pháp này, một luồng có thể thực thi
+trong khi luồng khác đang chờ đợi. Nói cách khác, trên một hệ thống có một CPU duy nhất, đa luồng được sử dụng
+để cho phép hai hoặc nhiều nhiệm vụ chia sẻ CPU. Loại đa luồng này thường được hỗ trợ bởi một đối tượng kiểu Thread
+(như mô tả trong Chương 11). Mặc dù loại đa luồng này luôn có ích, nó không được tối ưu hóa cho các tình huống
+khi hai hoặc nhiều CPU có sẵn (máy tính multicore).
+
+Khi có nhiều CPU, cần một loại khả năng đa luồng thứ hai hỗ trợ thực thi song song thực sự. Với hai hoặc nhiều CPU,
+có thể thực thi các phần của chương trình một cách đồng thời, mỗi phần thực thi trên CPU riêng của nó.
+Điều này có thể được sử dụng để tăng đáng kể tốc độ thực thi của một số loại hoạt động, chẳng hạn như sắp xếp,
+biến đổi hoặc tìm kiếm một mảng lớn. Trong nhiều trường hợp, các loại hoạt động này có thể được chia thành các
+phần nhỏ hơn (mỗi phần tác động lên một phần của mảng) và mỗi phần có thể chạy trên CPU riêng của nó.
+Như bạn có thể tưởng tượng, sự tăng hiệu suất có thể rất lớn. Đơn giản nói: Lập trình song song sẽ là một phần
+của tương lai của hầu hết các lập trình viên vì nó cung cấp một cách cải thiện đáng kể hiệu suất chương trình.

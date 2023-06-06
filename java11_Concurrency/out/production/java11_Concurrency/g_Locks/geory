@@ -1,0 +1,52 @@
+Khóa
+Gói java.util.concurrent.locks cung cấp hỗ trợ cho các khóa, đó là các đối tượng cung cấp một phương thức thay thế cho việc
+sử dụng từ khóa synchronized để kiểm soát truy cập vào một tài nguyên chung. Nói chung, đây là cách một khóa hoạt động.
+Trước khi truy cập vào một tài nguyên chung, khóa bảo vệ tài nguyên đó được giành lấy. Khi quyền truy cập vào tài nguyên hoàn tất,
+khóa được giải phóng. Nếu một luồng thứ hai cố gắng giành lấy khóa khi nó đang được sử dụng bởi một luồng khác,
+luồng thứ hai sẽ bị tạm dừng cho đến khi khóa được giải phóng. Như vậy, việc truy cập xung đột vào một tài nguyên chung được ngăn chặn.
+
+Các khóa rất hữu ích khi nhiều luồng cần truy cập vào giá trị của dữ liệu chia sẻ. Ví dụ, một ứng dụng quản lý hàng tồn kho có thể có
+một luồng đầu tiên xác nhận xem một mặt hàng có sẵn hàng hay không, sau đó giảm số lượng mặt hàng trên tay sau mỗi giao dịch.
+Nếu hai hoặc nhiều luồng này đang chạy, thì mà không có hình thức đồng bộ hóa nào, có thể có trường hợp một luồng đang trong quá trình
+giao dịch khi luồng thứ hai bắt đầu giao dịch của mình. Kết quả có thể là cả hai luồng sẽ cho rằng hàng tồn kho đủ,
+ngay cả khi chỉ có đủ hàng tồn kho để đáp ứng một giao dịch. Trong loại tình huống này, một khóa cung cấp một cách thuận tiện để xử lý
+việc đồng bộ hóa cần thiết.
+
+Giao diện Lock định nghĩa một khóa. Các phương thức được định nghĩa bởi Lock được hiển thị trong Bảng 28-1. Nói chung, để giành lấy một khóa,
+gọi lock(). Nếu khóa không khả dụng, lock() sẽ chờ. Để giải phóng một khóa, gọi unlock(). Để kiểm tra xem một khóa có sẵn và giành
+lấy nó nếu có, gọi tryLock(). Phương thức này sẽ không chờ đợi khóa nếu không khả dụng. Thay vào đó, nó trả về true nếu khóa được giành lấy
+và false nếu ngược lại. Phương thức newCondition() trả về một đối tượng Condition liên kết với khóa. Bằng cách sử dụng một Condition,
+bạn có thể kiểm soát chi tiết của khóa thông qua các phương thức như await() và signal(),
+cung cấp các chức năng tương tự như Object.wait() và Object.notify().
+
+Dưới đây là mô tả các phương thức sau:
+
+1. `void lock()`:
+Phương thức này được sử dụng để giành lấy khóa. Nếu khóa không khả dụng, nó sẽ chờ cho đến khi khóa có sẵn.
+Nếu các luồng đã giành lấy khóa, phương thức này sẽ tạm dừng cho đến khi khóa được giải phóng.
+
+2. `void lockInterruptibly() throws InterruptedException`:
+Phương thức này tương tự như `lock()`, nhưng nó cho phép luồng hiện tại bị ngắt để thoát ra khỏi quá trình chờ
+nếu nó được gọi phương thức `interrupt()`.
+
+3. `Condition newCondition()`:
+Phương thức này trả về một đối tượng Condition liên kết với khóa hiện tại. Condition được sử dụng để cung cấp các
+phương thức như `await()` và `signal()`, giúp kiểm soát chi tiết của khóa thông qua việc đợi và thông báo.
+
+4. `boolean tryLock()`:
+Phương thức này thử giành lấy khóa nếu nó có sẵn. Nếu khóa không khả dụng, phương thức này trả về false.
+Nếu khóa được giành lấy thành công, nó trả về true.
+
+5. `boolean tryLock(long wait, TimeUnit tu) throws InterruptedException`:
+Phương thức này tương tự như `tryLock()`, nhưng nó cho phép đặt một thời gian chờ tối đa. Nếu khóa không khả dụng
+trong khoảng thời gian chờ, phương thức này trả về false. Nếu khóa được giành lấy thành công, nó trả về true.
+
+6. `void unlock()`:
+Phương thức này được sử dụng để giải phóng khóa. Nó cần được gọi sau khi hoàn thành việc sử dụng khóa để cho phép các
+luồng khác có thể giành lấy khóa.
+
+Gói `java.util.concurrent.locks` cung cấp một triển khai của Lock được gọi là ReentrantLock.
+ReentrantLock triển khai một khóa tái nhập, tức là một khóa có thể được nhập lại bởi luồng hiện tại đang giữ khóa.
+Tất nhiên, trong trường hợp luồng nhập lại một khóa, tất cả các cuộc gọi đến `lock()` phải được cân bằng bằng số lần gọi `unlock()`.
+Nếu không, một luồng cố gắng giành lấy khóa sẽ bị tạm dừng cho đến khi khóa không còn được sử dụng.
+

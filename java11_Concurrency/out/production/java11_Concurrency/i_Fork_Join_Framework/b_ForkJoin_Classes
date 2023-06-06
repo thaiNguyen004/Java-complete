@@ -1,0 +1,28 @@
+Các lớp chính trong Framework Fork/Join
+Framework Fork/Join được đóng gói trong gói java.util.concurrent.
+Ở cốt lõi của Framework Fork/Join là bốn lớp sau:
+
+ForkJoinTask<V>:
+Đây là một lớp trừu tượng đại diện cho một nhiệm vụ trong Framework Fork/Join.
+Nó có thể được mở rộng bởi các lớp con để tạo ra các nhiệm vụ cụ thể. Lớp này cung cấp các phương thức
+để thực thi nhiệm vụ, chia nhỏ nhiệm vụ thành các phần nhỏ hơn và kết hợp các kết quả từ các phần nhỏ
+để tạo ra kết quả cuối cùng.
+
+ForkJoinPool: Đây là lớp quản lý việc thực thi các nhiệm vụ trong Framework Fork/Join.
+Nó quản lý một nhóm các luồng thực hiện các nhiệm vụ và cung cấp các phương thức để gửi nhiệm vụ
+vào hàng đợi và theo dõi quá trình thực thi.
+
+RecursiveAction: Đây là một lớp trừu tượng con của ForkJoinTask, được sử dụng cho các nhiệm vụ không trả về giá trị.
+Nó đại diện cho một nhiệm vụ có thể được chia nhỏ thành các phần nhỏ hơn để thực thi đồng thời.
+
+RecursiveTask<V>: Đây cũng là một lớp trừu tượng con của ForkJoinTask, nhưng được sử dụng cho các nhiệm vụ trả về giá trị.
+Nó đại diện cho một nhiệm vụ có thể được chia nhỏ và thực thi đồng thời, sau đó kết hợp các kết quả từ các phần nhỏ
+để trả về một giá trị kết quả. Lớp này được tham số hóa bởi kiểu dữ liệu của giá trị trả về (V).
+
+Dưới đây là cách chúng có liên quan. Một ForkJoinPool quản lý việc thực thi của các ForkJoinTask.
+ForkJoinTask là một lớp trừu tượng được mở rộng bởi các lớp trừu tượng RecursiveAction và RecursiveTask.
+Thông thường, mã của bạn sẽ mở rộng các lớp này để tạo ra một nhiệm vụ. Trước khi xem xét quá trình này chi tiết,
+việc tổng quan về các khía cạnh chính của mỗi lớp sẽ hữu ích.
+
+LƯU Ý: Lớp CountedCompleter cũng mở rộng ForkJoinTask. Tuy nhiên, việc thảo luận về CountedCompleter
+vượt quá phạm vi cuốn sách này.

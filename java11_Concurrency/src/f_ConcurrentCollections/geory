@@ -1,0 +1,25 @@
+
+Các Bộ sưu tập đồng thời
+Như đã giải thích, API đồng thời định nghĩa một số lớp bộ sưu tập đã được thiết kế
+cho hoạt động đồng thời. Chúng bao gồm:
+
+- ArrayBlockingQueue
+- ConcurrentHashMap
+- ConcurrentLinkedDeque
+- ConcurrentLinkedQueue
+- ConcurrentSkipListMap
+- ConcurrentSkipListSet
+- CopyOnWriteArrayList
+- CopyOnWriteArraySet
+- DelayQueue
+- LinkedBlockingDeque
+- LinkedBlockingQueue
+- LinkedTransferQueue
+- PriorityBlockingQueue
+- SynchronousQueue
+
+Các lớp này cung cấp các lựa chọn đồng thời cho các lớp liên quan của chúng được định nghĩa
+bởi Collections Framework. Các bộ sưu tập này hoạt động tương tự như các bộ sưu tập khác,
+chỉ khác là chúng cung cấp hỗ trợ đồng thời.
+Người lập trình quen thuộc với Collections Framework sẽ không gặp khó khăn khi sử dụng các bộ sưu tập
+đồng thời này.

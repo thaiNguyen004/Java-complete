@@ -1,0 +1,30 @@
+Một số Lời khuyên về Fork/Join:
+Dưới đây là một số lời khuyên giúp bạn tránh một số khó khăn liên quan đến việc sử dụng Framework Fork/Join.
+Đầu tiên, hạn chế sử dụng ngưỡng tuần tự quá thấp. Nói chung, hạn chế lỗi về phía cao sẽ tốt hơn là hạn chế
+lỗi về phía thấp. Nếu ngưỡng quá thấp, việc tạo và chuyển đổi các tác vụ có thể tiêu tốn nhiều thời gian hơn
+so với xử lý các tác vụ.
+
+Thứ hai, thường thì việc sử dụng mức độ song song mặc định là tốt nhất. Nếu bạn chỉ định một số nhỏ hơn, nó có
+thể làm giảm đáng kể lợi ích của việc sử dụng Framework Fork/Join.
+
+Nói chung, một ForkJoinTask không nên sử dụng các phương thức đồng bộ hoặc khối mã đồng bộ.
+Bạn cũng không thường muốn phương thức compute() sử dụng các loại đồng bộ hóa khác như semaphore.
+(Tuy nhiên, Phaser có thể được sử dụng khi thích hợp vì nó tương thích với cơ chế fork/join.)
+Hãy nhớ, ý tưởng chính đằng sau một ForkJoinTask là chiến lược chia để trị. Một phương pháp như vậy thường
+không phù hợp với các tình huống yêu cầu đồng bộ hóa từ bên ngoài. Hãy tránh các tình huống mà việc chặn
+đáng kể xảy ra thông qua I/O. Do đó, nói chung, một ForkJoinTask sẽ không thực hiện I/O.
+Đơn giản nói, để tận dụng tốt nhất Framework Fork/Join, một tác vụ nên thực hiện một tính toán có thể
+chạy mà không cần đồng bộ hóa hoặc chặn từ bên ngoài.
+
+Một điểm cuối cùng: Trừ khi trong trường hợp bất thường, đừng có giả định về môi trường thực thi mà
+mã của bạn sẽ chạy. Điều này có nghĩa là bạn không nên giả định rằng một số bộ xử lý cụ thể sẽ có sẵn,
+hoặc rằng các đặc điểm thực thi của chương trình của bạn sẽ không bị ảnh hưởng bởi các quy trình khác đang chạy cùng lúc.
+
+Utilities Concurency (Các tiện ích đồng thời) so với Phương pháp Truyền thống của Java:
+Với sức mạnh và tính linh hoạt được tìm thấy trong các tiện ích đồng thời, việc đặt câu hỏi sau là hợp lý:
+Liệu chúng có thay thế phương pháp truyền thống của Java trong việc đa luồng và đồng bộ hóa? Câu trả lời là không!
+Hỗ trợ ban đầu cho đa luồng và các tính năng đồng bộ tích hợp vẫn là cơ chế nên được áp dụng cho rất nhiều chương trình Java.
+Ví dụ, synchronized, wait() và notify() cung cấp các giải pháp tinh tế cho một loạt các vấn đề.
+Tuy nhiên, khi cần có sự kiểm soát bổ sung, các tiện ích đồng thời có sẵn để xử lý công việc đó.
+Hơn nữa, Framework Fork/Join cung cấp một cách mạnh mẽ để tích hợp các kỹ thuật lập trình song song vào các ứng dụng
+phức tạp hơn của bạn.

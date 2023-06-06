@@ -1,0 +1,6 @@
+Các đối tượng đồng bộ hóa (Synchronization Object)
+được hỗ trợ bởi các lớp Semaphore, CountDownLatch, CyclicBarrier, Exchanger và Phaser.
+Tổng thể, chúng cho phép bạn xử lý một số tình huống đồng bộ hóa trước đây khó khăn một cách dễ dàng.
+Chúng cũng có thể áp dụng cho một loạt các chương trình - ngay cả những chương trình chỉ chứa một độ
+tương đối hạn chế về đồng thời. Bởi vì các đối tượng đồng bộ hóa sẽ gây quan tâm cho gần như tất cả
+các chương trình Java, mỗi đối tượng sẽ được xem xét ở đây một cách chi tiết.

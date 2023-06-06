@@ -1,0 +1,51 @@
+Các Tiện ích Concurrency
+
+Từ khi ra đời, Java đã cung cấp hỗ trợ tích hợp sẵn cho multithreading và đồng bộ hóa.
+Ví dụ, luồng mới có thể được tạo ra bằng cách triển khai giao diện Runnable hoặc mở rộng lớp Thread;
+đồng bộ hóa có sẵn thông qua từ khóa synchronized; và giao tiếp giữa các luồng được hỗ trợ bằng các
+phương thức wait() và notify() được định nghĩa trong lớp Object. Nói chung, hỗ trợ tích hợp sẵn cho
+multithreading là một trong những đổi mới quan trọng nhất của Java và vẫn là một trong những điểm
+mạnh chính của nó.
+
+Tuy nhiên, mặc dù hỗ trợ multithreading ban đầu của Java có tính chất thuần túy trong khái niệm,
+nó không phải lúc nào cũng lý tưởng cho tất cả các ứng dụng, đặc biệt là những ứng dụng sử dụng đa luồng
+một cách tương đối lớn. Ví dụ, hỗ trợ multithreading ban đầu không cung cấp một số tính năng cấp cao như
+semaphore, thread pool và execution manager, giúp tạo ra các chương trình đồng thời mạnh mẽ.
+
+Quan trọng để giải thích từ đng multithreading và do đó "đồng thời". ầu rằng nhiều chương trình Java sử dụ
+Tuy nhiên, khi được sử dụng trong chương này, thuật ngữ "concurrent program" chỉ đề cập đến một chương trình
+sử dụng các luồng đang thực thi một cách đồng thời một cách toàn diện. Một ví dụ về một chương trình như vậy
+là một chương trình sử dụng các luồng riêng biệt để tính toán đồng thời các kết quả phần của một tính toán lớn hơn.
+
+Một ví dụ khác là một chương trình phối hợp hoạt động của một số luồng, mỗi luồng yêu cầu truy cập vào
+thông tin trong cơ sở dữ liệu. Trong trường hợp này, các truy cập chỉ đọc có thể được xử lý khác biệt so với các
+truy cập yêu cầu khả năng đọc/ghi.
+
+Để xử lý các yêu cầu của một chương trình đồng thời, JDK 5 đã thêm vào các tiện ích đồng thời, còn được gọi là
+API đồng thời. Bộ tiện ích đồng thời ban đầu cung cấp nhiều tính năng được mong muốn từ lâu bởi các nhà phát triển
+ứng dụng đồng thời. Ví dụ, nó cung cấp các công cụ đồng bộ hóa (như semaphore), thread pool, execution manager,
+khóa (lock), một số bộ sưu tập đồng thời và một cách thuận tiện để sử dụng luồng để nhận kết quả tính toán.
+
+Mặc dù API đồng thời ban đầu đã gây ấn tượng bởi chính nó, nó đã được mở rộng đáng kể bởi JDK 7. Thêm vào đó,
+thành phần quan trọng nhất là Fork/Join Framework. Fork/Join Framework giúp tạo ra các chương trình sử dụng nhiều
+bộ xử lý (như trong hệ thống đa lõi). Do đó, nó giúp tối ưu quá trình phát triển các chương trình trong đó hai hoặc
+nhiều phần được thực thi đồng thời (tức là thực thi song song thực sự), không chỉ là chia thời gian.
+
+Như bạn có thể tưởng tượng, việc thực thi song song có thể tăng đáng kể tốc độ của một số hoạt động.
+Với sự phổ biến của hệ thống đa lõi ngày nay, việc bao gồm Fork/Join Framework đã đúng thời điểm và mạnh mẽ.
+Kể từ khi JDK 8 được phát hành, Fork/Join Framework còn được cải tiến hơn nữa.
+
+Ngoài ra, cả JDK 8 và JDK 9 cũng đã thêm các tính năng liên quan đến các phần khác của API đồng thời.
+Do đó, API đồng thời tiếp tục tiến triển và mở rộng để đáp ứng nhu cầu của môi trường tính toán đương đại.
+
+API đồng thời ban đầu đã rất lớn, và các bổ sung trong suốt những năm qua đã làm tăng kích thước của nó đáng kể.
+Như bạn có thể mong đợi, nhiều vấn đề liên quan đến các tiện ích đồng thời là khá phức tạp. Việc bàn luận về tất cả
+các khía cạnh của nó không nằm trong phạm vi của cuốn sách này.
+
+Tuy nhiên, quan trọng đối với tất cả các lập trình viên là có kiến thức cơ bản và làm việc chung với các khía cạnh
+quan trọng của API đồng thời. Ngay cả trong các chương trình không sử dụng song song một cách tương đối lớn,
+các tính năng như công cụ đồng bộ hóa, luồng có thể gọi (callable threads) và executors vẫn có thể áp dụng cho
+nhiều tình huống khác nhau. Có lẽ quan trọng nhất, do sự gia tăng của máy tính đa lõi, các giải pháp liên quan đến
+Fork/Join Framework ngày càng phổ biến. Vì những lý do này, chương này giới thiệu tổng quan về một số tính năng
+cốt lõi được định nghĩa bởi các tiện ích đồng thời và trình bày một số ví dụ để minh họa cách sử dụng chúng.
+Chương kết thúc với một giới thiệu về Fork/Join Framework.
