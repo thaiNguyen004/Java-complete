@@ -1,0 +1,23 @@
+
+Cách để có được một Stream
+Bạn có thể thu được một stream qua nhiều cách khác nhau. Có thể nói phương pháp phổ biến nhất là khi thu được một stream từ một collection.
+Bắt đầu từ JDK 8, giao diện Collection đã được mở rộng để bao gồm hai phương thức thu được stream từ một collection.
+Phương thức đầu tiên là stream(), được trình bày như sau:
+    default Stream<E> stream()
+Phiên bản mặc định của nó trả về một sequential stream. Phương thức thứ hai là parallelStream(), được trình bày như sau:
+    default Stream<E> parallelStream()
+Phiên bản mặc định của nó trả về một parallel stream, nếu có thể (nếu không thể thu được parallel stream, có thể trả về một sequential stream thay thế).
+
+Parallel streams hỗ trợ việc thực thi song song của các hoạt động trên stream. Vì giao diện Collection được triển khai bởi mọi collection,
+các phương thức này có thể được sử dụng để thu được một stream từ bất kỳ lớp collection nào, chẳng hạn như ArrayList hoặc HashSet.
+
+Một stream cũng có thể được thu được từ một mảng thông qua việc sử dụng phương thức tĩnh stream() được thêm vào lớp Arrays.
+Một trong các hình thức của nó được trình bày như sau:
+    static <T> Stream<T> stream(T[] array)
+
+Ngoài ra, còn có một số phiên bản của phương thức stream() khác được định nghĩa, chẳng hạn như các phiên bản xử lý mảng của các kiểu nguyên thủy.
+Chúng trả về một stream có kiểu IntStream, DoubleStream hoặc LongStream.
+
+Có thể thu được Streams theo nhiều cách khác nhau. Ví dụ, nhiều hoạt động trên stream trả về một stream mới, và một stream từ nguồn I/O có thể
+được thu được bằng cách gọi phương thức lines() trên một BufferedReader.
+Dù stream được thu được bằng cách nào, nó có thể được sử dụng giống như bất kỳ stream nào khác.

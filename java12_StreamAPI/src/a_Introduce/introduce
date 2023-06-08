@@ -1,0 +1,35 @@
+The Stream API (Giao diện Stream)
+Trong số nhiều tính năng mới được thêm vào Java gần đây, hai trong số quan trọng nhất là biểu thức lambda
+và giao diện Stream (Stream API). Biểu thức lambda đã được mô tả trong Chương 15.
+Giao diện Stream được mô tả ở đây. Như bạn sẽ thấy, giao diện Stream được thiết kế với
+biểu thức lambda trong tư duy. Hơn nữa, giao diện Stream cung cấp một số ví dụ quan trọng nhất
+về sức mạnh mà biểu thức lambda mang đến cho Java.
+
+Mặc dù khả năng tương thích thiết kế với biểu thức lambda của giao diện Stream rất ấn tượng,
+mặt quan trọng nhất của giao diện Stream là khả năng thực hiện các hoạt động rất phức tạp như tìm kiếm,
+lọc, ánh xạ hoặc xử lý dữ liệu theo cách khác. Ví dụ, sử dụng giao diện Stream, bạn có thể xây dựng chuỗi
+các hành động giống như kiểu truy vấn cơ sở dữ liệu mà bạn có thể sử dụng SQL.
+
+Hơn nữa, trong nhiều trường hợp, các hành động như vậy có thể được thực hiện song song, do đó cung cấp một
+mức độ hiệu suất cao, đặc biệt là khi có liên quan đến các tập dữ liệu lớn. Đơn giản nói, giao diện Stream
+cung cấp một phương tiện mạnh mẽ để xử lý dữ liệu một cách hiệu quả, đồng thời dễ sử dụng.
+
+Trước khi tiếp tục, cần đưa ra một điểm quan trọng: Giao diện Stream sử dụng một số tính năng tiên tiến nhất của Java.
+Để hiểu và sử dụng hoàn toàn, bạn cần có kiến thức vững về generics và biểu thức lambda. Các khái niệm cơ bản về
+thực thi song song và hiểu biết về Collections Framework cũng là cần thiết. (Xem Chương 14, 15, 19 và 28.)
+
+Cơ bản về Stream
+
+Hãy bắt đầu bằng việc định nghĩa thuật ngữ "stream" trong ngữ cảnh của giao diện Stream API:
+một stream là một đường ống dùng để truyền dữ liệu. Do đó, một stream đại diện cho một chuỗi các đối tượng.
+Một stream hoạt động trên một nguồn dữ liệu, chẳng hạn như một mảng hoặc một bộ sưu tập.
+Một stream, trong chính nó, không bao giờ cung cấp bộ nhớ để lưu trữ dữ liệu.
+Nó chỉ di chuyển dữ liệu, có thể lọc, sắp xếp hoặc thực hiện các hoạt động khác trên dữ liệu đó trong quá trình
+di chuyển. Tuy nhiên, một quy tắc chung là một hoạt động của stream mà không tác động vào nguồn dữ liệu.
+Ví dụ, sắp xếp một stream không thay đổi thứ tự của nguồn dữ liệu. Thay vào đó, việc sắp xếp một stream dẫn đến
+việc tạo ra một stream mới tạo ra kết quả đã được sắp xếp.
+
+LƯU Ý: Cần nêu rõ rằng thuật ngữ "stream" được sử dụng ở đây khác với việc sử dụng "stream" khi các lớp I/O
+được mô tả trong sách này. Mặc dù một I/O stream có thể hoạt động tương tự như một trong những stream được
+định nghĩa bởi java.util.stream, chúng không giống nhau. Do đó, trong toàn bộ chương này, khi sử dụng thuật ngữ
+"stream", nó đề cập đến các đối tượng dựa trên một trong những loại stream được mô tả ở đây.
