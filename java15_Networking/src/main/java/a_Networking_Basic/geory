@@ -1,0 +1,59 @@
+
+Mạng (Networking)
+Từ khi ra đời, Java đã được liên kết với lập trình Internet. Có nhiều lý do cho điều này, trong đó một trong những lý do
+quan trọng nhất là khả năng tạo mã an toàn, đa nền tảng và di động của nó.
+Tuy nhiên, một trong những lý do quan trọng nhất khiến Java trở thành ngôn ngữ hàng đầu cho lập trình mạng
+là các lớp được định nghĩa trong gói java.net. Chúng cung cấp một cách tiện lợi cho các lập trình viên ở mọi
+trình độ để truy cập tài nguyên mạng.
+
+Bắt đầu từ JDK 11, Java cũng cung cấp hỗ trợ mạng tăng cường cho các khách hàng (Client) HTTP trong gói java.net.http
+trong một module cùng tên. Được gọi là HTTP Client API, nó củng cố thêm khả năng mạng của Java. Chương này khám phá
+gói java.net và kết thúc bằng việc giới thiệu gói java.net.http mới. Quan trọng để nhấn mạnh rằng mạng là một chủ đề rất lớn
+và đôi khi phức tạp. Cuốn sách này không thể đề cập đến tất cả các khả năng được chứa trong hai gói này.
+Thay vào đó, chương này tập trung vào một số lớp và giao diện cốt lõi của chúng.
+
+
+Cơ bản về Networking
+Trước khi bắt đầu, sẽ hữu ích để xem lại một số khái niệm và thuật ngữ chính trong mạng. Ở trung tâm của sự hỗ trợ mạng
+của Java là khái niệm về socket (ổ cắm).
+Một socket xác định một điểm cuối trong mạng. Mô hình socket đã được đưa vào 4.2BSD Berkeley UNIX từ những năm đầu thập kỷ 1980.
+Do đó, cũng được sử dụng thuật ngữ Berkeley socket. Sockets là nền tảng của mạng hiện đại vì nó cho phép một máy tính duy nhất
+phục vụ nhiều khách hàng khác nhau cùng một lúc, cũng như phục vụ nhiều loại thông tin khác nhau. Điều này được thực hiện
+thông qua việc sử dụng port, là một socket được đánh số trên một máy cụ thể. Một tiến trình máy chủ được gọi là "lắng nghe"
+một port cho đến khi một khách hàng kết nối đến nó. Một máy chủ được phép chấp nhận nhiều khách hàng kết nối đến cùng một số port,
+mặc dù mỗi phiên là duy nhất. Để quản lý nhiều kết nối khách hàng, một tiến trình máy chủ phải có đa luồng hoặc có một
+phương pháp khác để multiplex I/O đồng thời.
+
+Giao tiếp qua socket diễn ra thông qua một giao thức. Giao thức Internet (IP) là một giao thức định tuyến cấp thấp chịu
+trách nhiệm chia dữ liệu thành các gói nhỏ và gửi chúng đến một địa chỉ qua mạng, không đảm bảo gửi các gói đến điểm đích.
+Giao thức kiểm soát truyền thông TCP (Transmission Control Protocol) là một giao thức cấp cao quản lý việc kết nối các gói
+này một cách đáng tin cậy bằng cách xâu chuỗi chúng lại và sắp xếp và gửi lại khi cần thiết để truyền dữ liệu đáng tin cậy.
+Giao thức người dùng datagram UDP (User Datagram Protocol) ngồi cạnh TCP và có thể được sử dụng trực tiếp để hỗ trợ việc
+truyền tải nhanh, không kết nối và không đáng tin cậy của các gói.
+
+Sau khi thiết lập kết nối, một giao thức cấp cao tiếp theo diễn ra, phụ thuộc vào cổng bạn đang sử dụng. TCP/IP dành các cổng
+từ 1.024 trở xuống cho các giao thức cụ thể. Nhiều trong số đó sẽ quen thuộc với bạn nếu bạn đã dành thời gian lướt Internet.
+Cổng số 21 dành cho FTP; số 23 dành cho Telnet; số 25 dành cho email; số 43 dành cho whois; số 80 dành cho HTTP; số 119 dành
+cho netnews - và danh sách còn tiếp tục. Mỗi giao thức sẽ quyết định cách một khách hàng nên tương tác với cổng.
+
+Ví dụ, HTTP là giao thức mà trình duyệt web và máy chủ sử dụng để truyền tải các trang và hình ảnh siêu văn bản.
+Đó là một giao thức khá đơn giản cho một máy chủ web duyệt trang cơ bản. Dưới đây là cách nó hoạt động. Khi một khách hàng yêu cầu
+một tệp từ một máy chủ HTTP, một hành động được gọi là hit, nó đơn giản gửi tên của tệp theo một định dạng đặc biệt đến một
+cổng được xác định trước và đọc lại nội dung của tệp. Máy chủ cũng phản hồi với một mã trạng thái để cho khách hàng biết
+liệu yêu cầu có thể được thực hiện hay không và lý do tại sao.
+
+Một thành phần quan trọng của Internet là địa chỉ. Mỗi máy tính trên Internet đều có một địa chỉ. Một địa chỉ Internet
+là một số duy nhất xác định mỗi máy tính trên mạng. Ban đầu, tất cả các địa chỉ Internet gồm các giá trị 32-bit,
+được tổ chức thành bốn giá trị 8-bit. Loại địa chỉ này được chỉ định bởi IPv4 (Internet Protocol, phiên bản 4).
+Tuy nhiên, một hệ thống địa chỉ mới, được gọi là IPv6 (Internet Protocol, phiên bản 6) đã được sử dụng. IPv6 sử dụng một
+giá trị 128-bit để biểu thị một địa chỉ, được tổ chức thành tám đoạn 16-bit. Mặc dù có một số lý do và lợi ích cho IPv6,
+lợi ích chính là nó hỗ trợ không gian địa chỉ lớn hơn nhiều so với IPv4.
+
+May mắn thay, khi sử dụng Java, bạn thường không cần phải lo lắng về việc sử dụng địa chỉ IPv4 hay IPv6 vì
+Java xử lý các chi tiết đó cho bạn.
+
+Giống như các số trong địa chỉ IP mô tả một hệ thống phân cấp mạng, tên của một địa chỉ Internet, gọi là tên miền,
+mô tả vị trí của một máy trong không gian tên. Ví dụ, www.HerbSchildt.com thuộc về miền cấp cao COM
+(được sử dụng bởi các trang web thương mại Hoa Kỳ); nó được gọi là HerbSchildt, và www xác định máy chủ cho các yêu cầu web.
+Một tên miền Internet được ánh xạ thành một địa chỉ IP bằng Dịch vụ Đặt tên Miền (DNS). Điều này cho phép người dùng làm việc
+với tên miền, nhưng Internet hoạt động dựa trên địa chỉ IP.

@@ -1,0 +1,65 @@
+Gói java.net chứa các tính năng mạng gốc của Java, đã có sẵn từ phiên bản 1.0.
+Nó hỗ trợ TCP/IP bằng cách mở rộng giao diện stream I/O đã được thiết lập từ chương 21
+và bằng cách thêm các tính năng cần thiết để xây dựng các đối tượng I/O qua mạng.
+Java hỗ trợ cả gia đình giao thức TCP và UDP.
+TCP được sử dụng cho I/O dựa trên luồng đáng tin cậy qua mạng.
+UDP hỗ trợ một mô hình gửi nhận dữ liệu đơn giản hơn, do đó nhanh hơn.
+
+Các lớp được chứa trong gói java.net được hiển thị ở đây:
+
+Authenticator
+CacheRequest
+CacheResponse
+ContentHandler
+CookieHandler
+CookieManager
+DatagramPacket
+DatagramSocket
+DatagramSocketImpl
+HttpCookie
+HttpURLConnection
+IDN
+Inet4Address
+Inet6Address
+InetAddress
+InetSocketAddress
+InterfaceAddress
+JarURLConnection
+MulticastSocket
+NetPermission
+NetworkInterface
+PasswordAuthentication
+Proxy
+ProxySelector
+ResponseCache
+SecureCacheResponse
+ServerSocket
+Socket
+SocketAddress
+SocketImpl
+SocketPermission
+StandardSocketOption
+URI
+URL
+URLClassLoader
+URLConnection
+URLDecoder
+URLEncoder
+URLPermission
+URLStreamHandler
+ContentHandlerFactory
+CookiePolicy
+CookieStore
+DatagramSocketImplFactory
+FileNameMap
+ProtocolFamily
+SocketImplFactory
+SocketOption
+SocketOptions
+URLStreamHandlerFactory
+
+Bắt đầu từ JDK 9, java.net là một phần của mô-đun java.base.
+Trong các phần tiếp theo, chúng ta sẽ xem xét các lớp mạng chính và đưa ra một số ví dụ áp dụng cho chúng.
+Sau khi bạn hiểu các lớp mạng cốt lõi này, bạn sẽ có thể dễ dàng khám phá các lớp khác một cách độc lập.
+
+InetAddessesDemo.java
