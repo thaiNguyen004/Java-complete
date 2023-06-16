@@ -1,0 +1,58 @@
+/*
+* Sử dụng Tomcat
+* Tomcat bao gồm các thư viện lớp, tài liệu và hỗ trợ thời gian chạy mà bạn cần để tạo và kiểm tra servlet.
+* Tại thời điểm viết bài này, có nhiều phiên bản Tomcat khả dụng. Các hướng dẫn dưới đây sử dụng phiên bản 8.5.31.
+* Phiên bản Tomcat này được sử dụng ở đây vì nó sẽ hoạt động cho một phạm vi rất rộng của người đọc.
+* Bạn có thể tải Tomcat từ tomcat.apache.org. Bạn nên chọn một phiên bản phù hợp với môi trường của bạn.
+* Các ví dụ trong chương này giả định một môi trường Windows 64-bit. Giả sử rằng một phiên bản 64-bit
+* của Tomcat 8.5.31 đã được giải nén từ thư mục gốc,
+*
+* vị trí mặc định là C:\apache-tomcat-8.5.31-windows-x64\apache-tomcat-8.5.31\.
+*
+* Đây là vị trí được giả định trong các ví dụ trong cuốn sách này. Nếu bạn tải Tomcat ở một vị trí khác
+* (hoặc sử dụng một phiên bản Tomcat khác), bạn sẽ cần thay đổi các ví dụ tương ứng. Bạn có thể cần thiết lập
+* biến môi trường JAVA_HOME thành thư mục cấp cao nhất mà Development Kit của Java được cài đặt.
+*
+* LƯU Ý Tất cả các thư mục được hiển thị trong phần này giả định Tomcat 8.5.31.
+* Nếu bạn cài đặt một phiên bản Tomcat khác, bạn sẽ cần điều chỉnh tên và đường dẫn thư mục để phù hợp với
+* phiên bản bạn đã cài đặt.
+*
+* Sau khi đã cài đặt, bạn khởi động Tomcat bằng cách chọn startup.bat từ thư mục bin nằm dưới thư mục
+* apache-tomcat-8.5.31. Để dừng Tomcat, thực thi shutdown.bat, cũng trong thư mục bin.
+*
+* Các lớp và giao diện cần thiết để xây dựng servlet được chứa trong servlet-api.jar, nằm trong thư mục sau:
+*
+*   C:\apache-tomcat-8.5.31-windows-x64\apache-tomcat-8.5.31\lib
+*
+* Để làm cho servlet-api.jar có thể truy cập được, cập nhật biến môi trường CLASSPATH của bạn để bao gồm:
+* C:\apache-tomcat-8.5.31-windows-x64\apache-tomcat-8.5.31\lib\servlet-api.jar
+*
+* Hoặc bạn có thể chỉ định tệp này khi biên dịch servlet. Ví dụ, lệnh sau biên dịch ví dụ servlet đầu tiên:
+javac HelloServlet.java -classpath "C:\apache-tomcat-8.5.31-windows-x64\apache-tomcat-8.5.31\lib\servlet-api.jar"
+*
+* Sau khi bạn đã biên dịch một servlet, bạn phải cho phép Tomcat tìm thấy nó. Đối với mục đích của chúng tôi,
+* điều này có nghĩa là đặt nó vào một thư mục dưới thư mục webapps của Tomcat và nhập tên của nó vào tệp web.xml.
+* Để đơn giản hóa, các ví dụ trong chương này sử dụng thư mục và tệp web.xml mà Tomcat cung cấp cho servlet
+* ví dụ của riêng nó. Điều này có nghĩa là bạn sẽ không cần tạo bất kỳ tệp hay thư mục nào chỉ để thử nghiệm
+* các servlet mẫu. Dưới đây là quy trình bạn sẽ tuân thủ.
+*
+* Đầu tiên, sao chép tệp lớp của servlet vào thư mục sau:
+* C:\apache-tomcat-8.5.31-windows-x64\apache-tomcat-8.5.31\webapps\examples\WEB-INF\classes
+*
+* Tiếp theo, thêm tên và ánh xạ của servlet vào tệp web.xml trong thư mục sau:
+* C:\apache-tomcat-8.5.31-windows-x64\apache-tomcat-8.5.31\webapps\examples\WEB-INF
+*
+* Ví dụ, giả sử ví dụ đầu tiên có tên là HelloServlet, bạn sẽ thêm các dòng sau vào phần định nghĩa servlets:
+*       <servlet>
+*           <servlet-name>HelloServlet</servlet-name>
+*           <servlet-class>HelloServlet</servlet-class>
+*       </servlet>
+*
+* Tiếp theo, bạn sẽ thêm các dòng sau vào phần định nghĩa ánh xạ servlet:
+*       <servlet-mapping>
+*           <servlet-name>HelloServlet</servlet-name>
+*           <url-pattern>/servlets/servlet/HelloServlet</url-pattern>
+*       </servlet-mapping>
+*
+* Hãy tuân thủ cùng quy trình tổng quát này cho tất cả các ví dụ.
+* */

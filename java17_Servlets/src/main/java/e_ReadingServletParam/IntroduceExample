@@ -1,0 +1,12 @@
+Đọc các tham số Servlet
+Giao diện ServletRequest bao gồm các phương thức cho phép bạn đọc tên và giá trị của các tham số được bao gồm
+trong yêu cầu từ phía khách hàng. Chúng tôi sẽ phát triển một servlet để minh họa cách sử dụng chúng.
+Ví dụ này bao gồm hai tệp.
+
+1. Một trang web được định nghĩa trong tệp PostParameters.html
+2. Một servlet được định nghĩa trong tệp PostParametersServlet.java.
+
+Mã nguồn HTML cho PostParameters.html được hiển thị trong đoạn mã sau. Nó định nghĩa một bảng chứa hai nhãn
+và hai trường văn bản. Một nhãn là "Employee" và nhãn kia là "Phone". Một nút submit.
+
+Lưu ý rằng tham số action của thẻ form chỉ định một URL. URL xác định servlet để xử lý yêu cầu HTTP POST.

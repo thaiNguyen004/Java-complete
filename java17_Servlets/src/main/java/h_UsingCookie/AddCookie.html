@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<!--
+Dưới đây là mã nguồn HTML cho tệp AddCookie.html.
+Trang này chứa một trường văn bản trong đó có thể nhập giá trị. Trên trang cũng có một nút gửi.
+Khi nút này được nhấn, giá trị trong trường văn bản được gửi đến AddCookieServlet qua một yêu cầu HTTP POST.
+-->
+<body>
+<form name="form1" method="post" action="http://localhost:8080/examples/servlets/servlet/AddCookieServlet">
+  <b>Nhập giá trị cho my Cookie</b>
+  <input type="text" name="data" value="" size="25">
+  <input type="submit" value="Submit">
+</form>
+</body>
+</html>

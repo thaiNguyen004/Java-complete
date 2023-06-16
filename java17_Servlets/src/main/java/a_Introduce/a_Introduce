@@ -1,0 +1,4 @@
+Giới thiệu về Servlets
+Chương này giới thiệu về Servlets. Servlets là các chương trình nhỏ được thực thi trên phía máy chủ của một kết nối web.
+Chủ đề về Servlets khá lớn và nằm ngoài phạm vi của chương này để đề cập đến tất cả. Thay vào đó, chúng ta sẽ tập trung
+vào các khái niệm cốt lõi, giao diện và lớp, và phát triển một số ví dụ.

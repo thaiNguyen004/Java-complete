@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<!--
+* Xử lý Yêu cầu GET HTTP
+* Ở đây chúng ta sẽ phát triển một servlet xử lý yêu cầu GET HTTP. Servlet được gọi khi một
+* biểu mẫu trên một trang web được gửi đi.
+*
+* Ví dụ này bao gồm hai tệp. Một trang web được định nghĩa trong ColorGet.html
+* và một servlet được định nghĩa trong ColorGetServlet.java. Mã nguồn HTML cho ColorGet.html
+* được hiển thị trong danh sách dưới đây. Nó xác định một biểu mẫu chứa một phần tử select
+* và một nút gửi. Chú ý rằng tham số action của thẻ form xác định một URL.
+* URL xác định một servlet để xử lý yêu cầu GET HTTP.
+-->
+
+<body>
+    <form name="Form1" method="get" action="http://localhost:8080/examples/servlets/servlet/ColorGetServlet">
+        <p><b>Color</b></p>
+        <select name="color" size="1">
+            <option value="Red">Red</option>
+            <option value="Green">Green</option>
+            <option value="Blue">Blue</option>
+        </select>
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

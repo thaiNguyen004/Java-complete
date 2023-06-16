@@ -1,0 +1,10 @@
+Bây giờ, chúng ta hãy phát triển một servlet minh họa cách sử dụng cookie.
+Servlet được gọi khi một biểu mẫu trên trang web được gửi đi.
+
+Ví dụ này bao gồm ba tệp như đã tóm tắt dưới đây:
+
+AddCookie.html : Cho phép người dùng chỉ định giá trị cho cookie có tên MyCookie
+
+AddCookieServlet.java : Sử lý việt submit của AddCookie.html
+
+GetCookiesServlet.java : Hiển thị giá trị của các Cookie
