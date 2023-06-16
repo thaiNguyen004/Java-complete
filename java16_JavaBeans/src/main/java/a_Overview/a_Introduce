@@ -1,0 +1,58 @@
+1.
+Chương này cung cấp một tổng quan về việc tạo Java Beans.
+Beans (đối tượng) là quan trọng vì chúng cho phép bạn xây dựng các hệ thống phức tạp từ các thành phần phần mềm.
+Những thành phần này có thể do bạn cung cấp hoặc được cung cấp bởi một hoặc nhiều nhà cung cấp khác nhau.
+Java Beans sử dụng một kiến trúc gọi là JavaBeans để chỉ định cách những khối xây dựng này có thể hoạt động cùng nhau.
+
+Để hiểu rõ hơn giá trị của Beans, hãy xem xét ví dụ sau. Người thiết kế phần cứng có nhiều thành phần khác nhau có thể
+được tích hợp với nhau để xây dựng một hệ thống. Các thành phần như điện trở, tụ, và cuộn cảm là các ví dụ về các khối
+xây dựng đơn giản. Mạch tích hợp cung cấp chức năng nâng cao hơn. Tất cả những phần khác nhau này có thể được sử dụng lại.
+Không cần và không thể xây dựng lại những khả năng này mỗi khi cần một hệ thống mới. Ngoài ra, các khối xây dựng này
+cũng có thể được sử dụng trong các loại mạch khác nhau. Điều này có thể xảy ra vì hành vi của những thành phần
+này được hiểu và được ghi chép.
+
+Ngành công nghiệp phần mềm cũng tìm kiếm những lợi ích của tính tái sử dụng và khả năng tương tác trong một phương pháp
+dựa trên thành phần. Để hiện thực những lợi ích này, cần có một kiến trúc thành phần cho phép các chương trình được
+lắp ráp từ các khối xây dựng phần mềm, có thể được cung cấp bởi các nhà cung cấp khác nhau.
+Nó cũng phải cho phép người thiết kế chọn một thành phần, hiểu được khả năng của nó và tích hợp nó vào một ứng dụng.
+Khi phiên bản mới của một thành phần được cung cấp, nó nên dễ dàng tích hợp chức năng này vào mã hiện có.
+JavaBeans chính là một kiến trúc như vậy.
+
+2.
+Java Bean là một thành phần phần mềm được thiết kế để tái sử dụng trong nhiều môi trường khác nhau.
+Không có hạn chế về khả năng của một Bean. Nó có thể thực hiện một chức năng đơn giản như lấy giá trị tồn kho,
+hoặc một chức năng phức tạp như dự báo hiệu suất của một danh mục cổ phiếu.
+
+Một Bean có thể hiển thị cho người dùng cuối. Một ví dụ của điều này là một nút trên giao diện người dùng đồ họa.
+Một Bean cũng có thể không hiển thị cho người dùng. Phần mềm để giải mã dữ liệu đa phương tiện theo thời gian thực
+là một ví dụ cho loại khối xây dựng này. Cuối cùng, một Bean có thể được thiết kế để hoạt động tự động trên máy trạm
+của người dùng hoặc làm việc phối hợp với một tập hợp các thành phần phân tán khác.
+Phần mềm để tạo biểu đồ hình tròn từ một tập hợp các điểm dữ liệu là một ví dụ về Bean có thể thực thi cục bộ.
+Tuy nhiên, một Bean cung cấp thông tin giá trị thời gian thực từ sàn giao dịch chứng khoán hoặc hàng hóa sẽ cần
+làm việc phối hợp với phần mềm phân tán khác để lấy dữ liệu của nó.
+
+3.
+Các lợi ích của Beans
+Tái sử dụng: Java Bean được thiết kế để có thể tái sử dụng trong nhiều ứng dụng khác nhau.
+Điều này giúp tiết kiệm thời gian và công sức trong việc phát triển phần mềm, vì bạn không cần phải
+viết lại mã từ đầu mỗi khi cần sử dụng một thành phần tương tự.
+
+Tính tương tác: Java Bean cho phép tương tác dễ dàng giữa các thành phần phần mềm. Bạn có thể kết hợp các
+Bean lại với nhau để xây dựng các ứng dụng phức tạp. Điều này giúp tăng tính linh hoạt và khả năng mở rộng của ứng dụng.
+
+Quản lý thuộc tính: Java Bean cho phép định nghĩa và quản lý các thuộc tính của một thành phần.
+Bạn có thể định nghĩa các getter và setter để truy cập và thiết lập giá trị của thuộc tính. Đ
+iều này giúp tạo ra các thành phần dễ sử dụng và dễ hiểu.
+
+Sự kiện và xử lý sự kiện: Java Bean hỗ trợ xử lý sự kiện thông qua việc đăng ký và phát sinh sự kiện.
+Bạn có thể đăng ký các Bean để lắng nghe sự kiện từ các thành phần khác và phát sinh sự kiện để thông báo
+cho các thành phần khác về các thay đổi hoặc hành động xảy ra.
+
+Tính duy trì trạng thái: Java Bean cho phép lưu trữ trạng thái của một thành phần và khôi phục lại sau này.
+Điều này giúp duy trì thông tin quan trọng khi ứng dụng được tắt và khởi động lại.
+
+Hỗ trợ công cụ: Java Bean đi kèm với các công cụ hỗ trợ như IDE (Integrated Development Environment)
+và các công cụ thiết kế giao diện người dùng, giúp phát triển và quản lý các Bean dễ dàng hơn.
+
+Tuân thủ chuẩn: Java Bean tuân thủ các quy chuẩn của JavaBeans API, điều này giúp đảm bảo tính tương thích
+và tương thích ngược với các công nghệ và nền tảng Java khác.

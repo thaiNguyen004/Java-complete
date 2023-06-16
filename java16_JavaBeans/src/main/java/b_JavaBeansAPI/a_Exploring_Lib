@@ -1,0 +1,170 @@
+JavaBeans API
+Chức năng JavaBeans được cung cấp bởi một tập hợp các lớp và giao diện trong gói java.beans.
+Bắt đầu từ JDK 9, gói này nằm trong mô-đun java.desktop. Phần này cung cấp một cái nhìn tổng quan
+ngắn gọn về nội dung của nó.
+Bảng 1 liệt kê các giao diện trong java.beans và cung cấp mô tả ngắn gọn về chức năng của chúng.
+Bảng 2 liệt kê các lớp trong java.beans.
+
+1.
+
+Các giao diện sau đây trong JavaBeans có các mô tả như sau:
+
+1. AppletInitializer:
+Được sử dụng để khởi tạo các applet trong môi trường Java.
+
+2. BeanInfo:
+Cung cấp thông tin về một Bean, bao gồm mô tả thuộc tính, sự kiện và phương thức của Bean.
+Nó cho phép các công cụ phát triển tự động tạo ra giao diện người dùng để cấu hình và sử dụng Bean.
+
+3. Customizer:
+Là một giao diện được sử dụng để tạo một công cụ tùy chỉnh để cấu hình một Bean. Nó cung cấp giao diện
+người dùng cho người dùng cuối để thay đổi các thuộc tính của Bean theo cách tùy chỉnh.
+
+4. DesignMode:
+Giao diện này được sử dụng để kiểm tra xem một Bean đang chạy trong chế độ thiết kế (design mode) hay không.
+Nó cung cấp các phương thức để kiểm tra và đặt chế độ thiết kế cho một Bean.
+
+5. ExceptionListener:
+Được sử dụng để xử lý các ngoại lệ (exceptions) xảy ra trong quá trình xử lý sự kiện của một Bean.
+
+6. PropertyChangeListener:
+Cho phép lắng nghe và xử lý các sự kiện khi một thuộc tính của Bean được thay đổi. Giao diện này
+được triển khai bởi các lớp xử lý sự kiện để nhận thông báo về các thay đổi thuộc tính của Bean.
+
+7. PropertyEditor:
+Được sử dụng để chỉnh sửa và hiển thị giá trị của một thuộc tính của Bean trong môi trường thiết kế.
+
+8. VetoableChangeListener:
+Tương tự như PropertyChangeListener, giao diện này cho phép lắng nghe và xử lý các sự kiện khi có một
+sự thay đổi thuộc tính được đề xuất của Bean. Tuy nhiên, người nghe có thể từ chối thay đổi bằng cách
+ném một ngoại lệ VetoableChangeListener.
+
+9. Visibility:
+Giao diện này được sử dụng để xác định tính khả nhìn (visibility) của một Bean.
+Nó cung cấp các phương thức để kiểm tra và đặt tính khả nhìn của một Bean.
+
+
+2.
+
+Các lớp sau đây trong JavaBeans có các mô tả như sau:
+
+1. BeanDescriptor:
+Đại diện cho mô tả của một Bean. Nó chứa thông tin về Bean như tên, mô tả, hình ảnh, v.v.
+Lớp này cung cấp phương thức để truy xuất và thiết lập các thuộc tính của BeanDescriptor.
+
+2. Beans:
+Là một lớp tiện ích chứa các phương thức tĩnh để làm việc với các Beans. Nó cung cấp các phương thức
+để tạo, sao chép, kiểm tra kiểu, v.v., liên quan đến việc làm việc với Beans.
+
+3. DefaultPersistenceDelegate:
+Là một lớp được sử dụng trong quá trình tuần tự hóa (serialization) của Beans. Nó cung cấp một cách
+mặc định để tuần tự hóa các thuộc tính của một Bean.
+
+4. Encoder:
+Được sử dụng để tuần tự hóa các đối tượng và Beans thành các chuỗi mã. Nó là một công cụ quan trọng
+trong việc tuần tự hóa và lưu trữ các đối tượng Java.
+
+5. EventHandler:
+Lớp này cho phép liên kết sự kiện (event) với phương thức xử lý sự kiện (event handler) thông qua
+việc sử dụng reflexion. Nó giúp xử lý các sự kiện một cách dễ dàng và linh hoạt.
+
+6. EventSetDescriptor:
+Đại diện cho tập hợp các sự kiện (event set) có thể xảy ra trên một Bean. Lớp này cung cấp thông tin
+về các sự kiện và phương thức để truy xuất thông tin đó.
+
+7. Expression:
+Đại diện cho một biểu thức (expression) trong JavaBeans. Nó thể hiện một phép gán giá trị hoặc một
+cuộc gọi phương thức đối với một đối tượng.
+
+8. FeatureDescriptor:
+Đại diện cho mô tả của một tính năng (feature) trong một Bean. Nó chứa thông tin về tính năng
+như tên, mô tả, v.v. Lớp này cung cấp phương thức để truy xuất và thiết lập các thuộc tính
+của FeatureDescriptor.
+
+9. IndexedPropertyChangeEvent:
+Đại diện cho một sự kiện khi một thuộc tính có chỉ mục trong một Bean được thay đổi.
+Nó chứa thông tin về sự thay đổi, bao gồm tên thuộc tính, chỉ mục và giá trị mới và cũ.
+
+10. IndexedPropertyDescriptor:
+Đại diện cho một mô tả của một thuộc tính có chỉ mục trong một Bean. Nó cung cấp thông tin về tên,
+kiểu dữ liệu và phương thức truy cập cho thuộc tính.
+
+11. IntrospectionException:
+Là một ngoại lệ (exception) ném ra khi có vấn đề xảy ra trong quá trình khám phá thông tin (introspection)
+của một Bean.
+
+12. Introspector:
+Là một công cụ để khám phá thông tin về các thuộc tính, sự kiện và phương thức của một Bean.
+Nó cung cấp phương thức để truy xuất thông tin về Bean và tạo các đối tượng
+PropertyDescriptor, EventSetDescriptor và MethodDescriptor tương ứng.
+
+13. MethodDescriptor:
+Đại diện cho mô tả của một phương thức trong một Bean. Nó cung cấp thông tin về tên, tham số và kiểu trả về
+của phương thức.
+
+14. ParameterDescriptor:
+Đại diện cho mô tả của một tham số trong một phương thức Bean. Nó cung cấp thông tin về tên và kiểu dữ liệu
+của tham số.
+
+15. PersistenceDelegate:
+Là một lớp được sử dụng để tuần tự hóa (serialization) và giải tuần tự hóa các đối tượng.
+Nó cung cấp quy tắc cụ thể để lưu trữ và khôi phục giá trị của các thuộc tính của một đối tượng.
+
+16. PropertyChangeEvent:
+Đại diện cho một sự kiện khi một thuộc tính của Bean được thay đổi. Nó chứa thông tin về sự thay đổi,
+bao gồm tên thuộc tính và giá trị mới và cũ.
+
+17. PropertyChangeListenerProxy:
+Là một lớp proxy được sử dụng để lắng nghe các sự kiện PropertyChangeEvent từ một PropertyChangeListener.
+Nó giúp chuyển tiếp sự kiện tới người lắng nghe thực tế.
+
+18. PropertyChangeSupport:
+Là một lớp hỗ trợ để quản lý và thông báo các sự kiện PropertyChangeEvent cho các người lắng nghe (listeners)
+đã đăng ký.
+
+19. PropertyDescriptor:
+Đại diện cho mô tả của một thuộc tính trong một Bean. Nó cung cấp thông tin về tên, kiểu dữ liệu,
+phương thức truy cập và các thuộc tính khác của thuộc tính.
+
+20. PropertyEditorManager:
+Là một lớp quản lý để đăng ký và quản lý các PropertyEditor cho các kiểu dữ liệu tùy chỉnh.
+Nó giúp định dạng và chỉnh sửa giá trị của thuộc tính trong quá trình cấu hình Bean.
+
+21. PropertyEditorSupport:
+Là một lớp trừu tượng cung cấp sự hỗ trợ cơ bản cho việc triển khai các PropertyEditor.
+Nó cung cấp các phương thức để xử lý giá trị và chuỗi đại diện của một thuộc tính.
+
+22. PropertyVetoException:
+Là một ngoại lệ ném ra khi một thay đổi thuộc tính bị từ chối bởi một người lắng nghe (listener)
+VetoableChangeListener.
+
+23. SimpleBeanInfo:
+Là một lớp trừu tượng cung cấp thông tin đơn giản về một Bean. Nó được sử dụng để định nghĩa các
+thông tin cơ bản như biểu tượng, mô tả, sự kiện, v.v.
+
+24. Statement:
+Đại diện cho một câu lệnh SQL hoặc một lời gọi phương thức được sử dụng để thực thi trong một môi trường Bean.
+
+25. VetoableChangeListenerProxy:
+Là một lớp proxy được sử dụng để lắng nghe các sự kiện VetoableChangeEvent từ một VetoableChangeListener.
+Nó giúp chuyển tiếp sự kiện tới người lắng nghe thực tế.
+
+26. VetoableChangeSupport:
+Là một lớp hỗ trợ để quản lý và thông báo các sự kiện VetoableChangeEvent cho các người lắng nghe
+(listeners) đã đăng ký.
+
+27. XMLDecoder:
+Được sử dụng để giải mã (decode) dữ liệu từ định dạng XML thành các đối tượng tương ứng trong Java.
+
+28. XMLEncoder:
+Được sử dụng để mã hóa (encode) các đối tượng Java thành định dạng XML, cho phép lưu trữ và truyền
+dữ liệu dễ dàng.
+
+Mặc dù nằm ngoài phạm vi của chương này để thảo luận về tất cả các lớp,
+có bốn lớp đặc biệt đáng quan tâm:
+Introspector, PropertyDescriptor, EventSetDescriptor và MethodDescriptor.
+Mỗi lớp sẽ được xem xét một cách ngắn gọn ở đây.
+
+
+
+

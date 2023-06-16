@@ -1,0 +1,23 @@
+Mẫu thiết kế cho Thuộc tính
+
+Một thuộc tính là một phần của trạng thái của một Bean. Các giá trị được gán cho các thuộc tính
+xác định hành vi và giao diện của thành phần đó. Một thuộc tính được đặt thông qua phương thức setter.
+Một thuộc tính được lấy thông qua phương thức getter. Có hai loại thuộc tính: đơn giản và có chỉ số.
+
+Thuộc tính đơn giản
+
+Một thuộc tính đơn giản có một giá trị duy nhất. Nó có thể được xác định bằng các mẫu thiết kế sau,
+trong đó N là tên của thuộc tính và T là kiểu dữ liệu của nó:
+
+public T getN()
+public void setN(T arg)
+
+Một thuộc tính đơn giản có thể được đọc và ghi thông qua việc sử dụng cả phương thức getter và setter.
+Một thuộc tính chỉ đọc có chỉ một phương thức get để truy xuất giá trị. Một thuộc tính chỉ ghi chỉ có
+một phương thức set để thiết lập giá trị.
+
+Dưới đây là ba ví dụ về các thuộc tính đơn giản có thể đọc và ghi kèm theo các phương thức getter và setter
+tương ứng của chúng.
+
+LƯU Ý: Đối với một thuộc tính boolean, một phương thức có dạng isPropertyName()
+cũng có thể được sử dụng như một phương thức truy cập.
